@@ -1,0 +1,2 @@
+node_modules
+# This causes git to ignore node module folder
