@@ -1,0 +1,67 @@
+body {
+    font-family: "Open SAns", sans-serif; /*body will use this if cannot use open sans*/
+}
+
+h1,h2,h3 {
+    font-family: "Lobster", cursive;
+}
+
+h2 {
+    color:darkmagenta;
+}
+
+header h2 {
+    color:pink;
+}
+
+footer{
+    background-image:linear-gradient(pink,rgb(250, 221, 221));
+    padding:20px 0;
+}
+
+.jumbotron {
+    /* This is a bootstrap defined class: */
+    padding:60px; 
+    /* to pad 30px to all four sides */
+    background-image:linear-gradient(to right, navy, blue, teal);
+    color: whitesmoke;
+}
+
+.row-content {
+    padding: 50px 0;
+    border-bottom: 1px ridge;
+    min-height:200px;
+    /* 50px top and bottom and zero pixels left/right */
+}
+
+.nucamp {
+    color:coral;
+}
+
+
+
+
+
+
+
+/* From previous lesson, just borders: */
+img {
+    max-width:100%;
+    height:auto;
+}
+
+.container, container-fluid {
+    border: solid lightblue;
+}
+
+.row{
+    border: dotted rgb(161, 161, 161);
+}
+
+.row div {
+    border: dashed lightgreen;
+}
+
+.row-content {
+
+}

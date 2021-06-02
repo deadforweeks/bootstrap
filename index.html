@@ -12,49 +12,39 @@
     <!-- Bootstrap CSS: -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 
+    <!-- Additional CSS must be placed AFTER Boostraping CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+    <link rel="stylesheet" href="css/styles.css">
+
     <title>NUCAMP A BETTER WAY TO CAMP</title>
-        <style>
-            img {
-                max-width:100%;
-                height:auto;
-            }
 
-            .container, container-fluid {
-                border: solid lightblue;
-            }
-
-            .row{
-                border: solid lightyellow;
-            }
-
-            .row div {
-                border: solid lightgreen;
-            }
-        </style>
 </head>
+
 <body>
 
 <!-- APPLYING BOOSTRAP EXERCISE TO OUR PRESENT WEBSITE -->
-    <header class="jumbotron"><!-- Jumbotron high lights / emphasizes and covers a whole goddamn area -->
+    <header class="jumbotron jumbotron-fluid">
+    <!-- Jumbotron high lights / emphasizes and covers a whole goddamn area 
+    Jumbotron fluid removes the curved corners-->
         <div class = "container">
             <div class = "row">
                 <div class = "col"> 
                 <!-- Default: XS size as col/bootstrap is configured -->
-                <h1>NUCAMP</h1>
+                <h1 class="nucamp">NUCAMP</h1>
                 <H2>A BETTER WAY TO CAMP</H2>    
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="row">
-            
-            <!-- FIRST DIV -->
+    <div class="container">             <!-- FIRST DIV -->
+        <div class="row row-content
+        align-items-center"> <!--row content we will set up ourselves-->
             <div class="col-sm-4 order-sm-last col-md-3"><!--xs not defined! Which means if resizing goes below SMALL these tables/rows/columns will take up EQUAL AMOUNT OF SPACE-->
                 <!-- This would pick up small viewport of four/12 of columns of this row, which is a third of the row. but when size is medium, this col medium three class would take over and make this column pick up three out of 12 columns which is a quarter of this row -->
                 <!-- When SM-LAST is put in, the reverse of order will happen and it'll apply to small and beyond -->
-                <h2>1st DISCOVER & REVIEW</h2>
+                <h2 class="text-sm-right">1st DISCOVER & REVIEW</h2>
+                <!-- This will make small and up viewports align to the RIGHT -->
             </div>
 
             <div class="col">
@@ -64,7 +54,7 @@
         </div>
 
         <!--SECOND ROW-->
-        <div class="row">
+        <div class="row row-content align-items-center">
             <div class="col-sm-4 col-md-3">
                 <!-- If extra small, as not defined above, this column will by default will pick up all 12 columns of the row and the second column will get bumped down and stacked vertically -->
                 <h2>2nd. FEATURED CAMPSITES</h2>
@@ -76,9 +66,10 @@
         </div>
         
         <!-- third -->
-        <DIV class="row">
+        <DIV class="row row-content align-items-center">        
+        <!-- Align items center makes the boxes go into the center of the table -->
             <div class="col-sm-4 order-sm-last col-md-3">
-                <H2>3rd. OUR COMMUNITY PARTNERS</H2>
+                <H2 class="text-sm-right">3rd. OUR COMMUNITY PARTNERS</H2>
             </div>
 
             <div class="col">
@@ -87,6 +78,7 @@
             </div>
         </DIV>
     </div>
+
 
     <footer> 
     <!-- fOOTER starts off with three div columns that would otherwise be in the same row! -->
@@ -97,7 +89,7 @@
             when it's at SMALL viewport it spans across 2/12 which is one-sith of its total -->
             <!--always out of 12-->
             <div class="col-4 col-sm-2 offset-1"> 
-            <!-- offsetting function here: offset-1 will PUSH SOMETHING TO THE RIGHT -->            
+            <!-- offsetting function here: offset-1 will PUSH SOMETHING TO THE RIGHT by 1/12th of table -->            
 
                 <h5>LINKS </h5>
                 <ul class="list-unstyled">
@@ -110,18 +102,18 @@
             </div>
         
 
-            <div class="col-6 col-sm-5">
+            <div class="col-6 col-sm-5 text-center">
+            <!-- text-center wasn't specified @ a breakpoint therefore it'll apply for ALL viewports -->
             <!-- When it's XS it will span across 6/12th, and when it's small it'll span across 5/12th -->
-                <h5>Social</h5>
-                <ul>
-                    <li><a href="#">IG</a></li>
-                    <li><a href="#">FB</a></li>
-                    <li><a href="#">TWITTER</a></li>
-                    <li><a href="#">YOUTUBE</a></li>
+                <h5>SOCIAL</h5>
+                    <a href="#">IG</a>
+                    <a href="#">FB</a>
+                    <a href="#">TWITTER</a>
+                    <a href="#">YOUTUBE</a>
                 </ul>
             </div>
 
-            <DIV class="col-sm-4"> 
+            <DIV class="col-sm-4 text-center"> 
             <!--notice XS undefined which means it'll take the FULL WIDTH of the XS viewports-->
             <!-- But as per defined when it is small it sans across 4/12 of columns -->
                 TEL: 1 800 911 9111<BR/>
