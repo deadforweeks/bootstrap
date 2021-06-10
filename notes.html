@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--viewport metatag
+    sets current width to the device's width,
+    and sets the scale to 1 which is the device's x/y.
+    Basically if the below viewport <> is crossed out, it looks like crap with the width which you have to scroll back and forth in order to read the horizontal axis of the hwole page. If viewport is enabled it helps to wrap.is -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS: -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+
+    <!-- Additional CSS must be placed AFTER Boostraping CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>NUCAMP A BETTER WAY TO CAMP</title>
+
+</head>
+
+<body>
+    <!--    WEEK 2 BOOTSTRAP-->
+
+    <div class="bg-primary text-white p-3 ml-lg-5 m mt-5">Spacing & colour utility classes demo</div>
+    <!-- p-3 padding:3  
+        ml-5 margin-left-5 
+        ml-lg-5 mr-lg-5  WHEN VIEWPORT IS LG  OR GREATER
+        mt-5 margin-top 5 -->
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="aboutus.html">About</a></li>
+            <li><a href="#">Sites</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav><!-- Boostrap's nav bar shrinks into a togger when smaller -->
+
+
+
+<div class="mb-5"></div>
+    <!-- WEEK 1 BOOT STRAP START -->
+<!-- <a href="aboutus.html"><h1>About Us</h1></a> -->
+<!-- APPLYING BOOSTRAP EXERCISE TO OUR PRESENT WEBSITE -->
+    <header class="jumbotron jumbotron-fluid">
+    <!-- Jumbotron high lights / emphasizes and covers a whole goddamn area 
+    Jumbotron fluid removes the curved corners-->
+        <div class = "container">
+            <div class = "row">
+                <div class = "col"> 
+                <!-- Default: XS size as col/bootstrap is configured -->
+                <h1 class="nucamp">NUCAMP</h1>
+                <H2>A BETTER WAY TO CAMP</H2>    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">             <!-- FIRST DIV -->
+        <div class="row row-content
+        align-items-center"> <!--row content we will set up ourselves-->
+            <div class="col-sm-4 order-sm-last col-md-3"><!--xs not defined! Which means if resizing goes below SMALL these tables/rows/columns will take up EQUAL AMOUNT OF SPACE-->
+            <!-- This would pick up small viewport of four/12 of columns of this row, which is a third of the row. but when size is medium, this col medium three class would take over and make this column pick up three out of 12 columns which is a quarter of this row -->
+            <!-- When SM-LAST is put in, the reverse of order will happen and it'll apply to small and beyond -->
+                <h2 class="text-lg-right">1st DISCOVER & REVIEW</h2>
+                <!-- This will make small and up viewports align to the RIGHT -->
+            </div>
+
+            <div class="col">
+                <H2>Our Campsites</H2>
+                <P>Explore our database & curated campsites & leave your own reviews</P>
+            </div>
+        </div>
+
+        <!--SECOND ROW-->
+        <div class="row row-content align-items-center">
+            <div class="col-sm-4 col-md-3">
+                <!-- If extra small, as not defined above, this column will by default will pick up all 12 columns of the row and the second column will get bumped down and stacked vertically -->
+                <h2>2nd. FEATURED CAMPSITES</h2>
+            </div>
+            <div class="col">
+                <H3>React Lake Campground</H3>
+                <P>Nesteld in the foothills of Chrome mountains this campground is on the shores of the pristine React Lake is a favourite for fly fishers</P>
+            </div>
+        </div>
+        
+        <!-- third -->
+        <DIV class="row row-content align-items-center">        
+        <!-- Align items center makes the boxes go into the center of the table -->
+            <div class="col-sm-4 order-sm-last col-md-3">
+                <H2 class="text-sm-right">3rd. OUR COMMUNITY PARTNERS</H2>
+            </div>
+
+            <div class="col">
+                <H3>Boot Strap outfitters</H3>
+                <P>Bootstrap outfitters supply you with gear you need at a price you cannot beat</P>
+            </div>
+        </DIV>
+    </div>
+
+
+    <footer> 
+    <!-- fOOTER starts off with three div columns that would otherwise be in the same row! -->
+    <div class="container">
+        <div class="row">
+
+            <!-- when it's XS it spans 4/12th which is 1/3rd of total viewport dimension
+            when it's at SMALL viewport it spans across 2/12 which is one-sith of its total -->
+            <!--always out of 12-->
+            <div class="col-4 col-sm-2 offset-1"> 
+            <!-- offsetting function here: offset-1 will PUSH SOMETHING TO THE RIGHT by 1/12th of table -->            
+
+                <h5>LINKS </h5>
+                <ul class="list-unstyled">
+                    <li>(when offsetted it jumps further towards the right as the whole div)</li>
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">sites</a></li>
+                    <li><a href="#">contact</a></li>
+                </ul>
+            </div>
+        
+
+            <div class="col-6 col-sm-5 text-center">
+            <!-- text-center wasn't specified @ a breakpoint therefore it'll apply for ALL viewports -->
+            <!-- When it's XS it will span across 6/12th, and when it's small it'll span across 5/12th -->
+                <h5>SOCIAL</h5>
+                    <a href="#">IG</a>
+                    <a href="#">FB</a>
+                    <a href="#">TWITTER</a>
+                    <a href="#">YOUTUBE</a>
+                </ul>
+            </div>
+
+            <DIV class="col-sm-4 text-center"> 
+            <!--notice XS undefined which means it'll take the FULL WIDTH of the XS viewports-->
+            <!-- But as per defined when it is small it sans across 4/12 of columns -->
+                TEL: 1 800 911 9111<BR/>
+                EMAIL: CAMPSITES@NUCAMP.CO
+            </DIV>
+        </div>
+    </div>
+    </footer>
+    <!-- Up to this point, we set up a responsive web site -->
+
+
+
+
+
+
+
+
+
+
+<hr/>
+    <!-- Container class fluid means make it fixed and adjustable to resizing-->
+    <div class="container"><!-- Fixed container means that it resizes at certain viewpoints -->
+        <div class="row">
+                    <!-- Hello? (don't do anything like this in row) -->
+                    <!-- Each bootstrap row can have 1-12 columns -->
+                    <div class="col">1</div>
+                    <div class="col">2</div>
+                    <div class="col">3</div>
+                    <div class="col">4</div>
+                    <div class="col">5</div>
+                    <div class="col">6</div>
+                    <div class="col">7</div>
+                    <div class="col">8</div>
+                    <div class="col">9</div>
+                    <div class="col">10</div>
+                    <div class="col">11</div>
+                    <div class="col">12</div>
+                </div>
+        
+            <div class="row">
+                <div class="col">ONE</div>
+            </div>
+        
+            <div class="row">
+                <!-- A row can have 12 colums in total -->
+                <div class="col-4">ABCD</div><!-- takes up 1/3rd -->
+                <div class="col">BCDEF</div><!-- takes up 2/3rd. You don't have to specify eight, it just calculates 12minus4 -->
+            </div>
+        
+            <div class="row">
+                <div class="col-7">This column spans across seven slots out of 12</div>
+                <div class="col">This takes up the rest (5)</div>
+            </div>
+        
+            <div class="row">
+                <div class="col">Equal</div>
+                <div class="col">Equal</div>
+                <div class="col">Equal</div>
+            </div>
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Hello? (don't do anything like this in row) -->
+                    <div class="col">Container</div>
+                    <div class="col">Fluid</div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col">distributed/12</div>
+                <div class="col-6">col-6</div>
+                <div class="col">distributed/12</div>
+            </div>
+        
+            <div class="row">
+                <div class="col-1">col-1</div>
+                <div class="col-2">col-2</div>
+                <div class="col-4">col-4</div>
+                <div class="col-5">col-5</div>
+            </div>
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <B>GRID BASICS RECAP:</B><BR/><BR/>
+                        - MUST USE CONTAINER, ROW, AND COLUMN CLASSES<BR/>
+                        - ALL CONTENT GOES INSIDE THE COLUMN DIVS ONLY<BR/>
+                     ---(12 POTENTIAL COLUMNS IN EACH ROW)<BR/>
+                      - SPECIFY HOW MANY COLUMNS TO SPAN USING COL-#<BR/>
+                      - YOU LEAVE # OUT BOOT STRAY AUTO LAYOUT LETS THAT COLUMN TAKE UP WHATEVER SPACE IS AVAILABLE<BR/>
+                       - IF YOU LEAVE # OUT FROM MULTIPLE COLUMNS BOOTSTRAP MAKES EM EQUAL IN WIDTH
+        
+                       <H1>BREAKPOINTS BOOTSTRAP</H1>
+            (xs)			< 576px (default if not specified)<BR/>
+            SM			>=576px<BR/>
+            MD			>= 768px<BR/>
+            LG			>= 992px<BR/>
+            XL			>= 1200px<BR/>
+                    </div>
+                </div>
+            </div>
+            Before:
+            <div class="row">
+                <div class="col">assumed XS applied same way for all viewports</div>
+                <div class="col">these classes unspecified so it means XS and up</div>
+                <div class="col">these column classes are currently applied for ALL VIEWPORTS</div>
+            </div>
+            
+            <p>What if we want the TOP ROW to display differently for viewports size medium and up? I want it to look the same as it does now for XS and S, but I want middle column to be bigger for viewports M and up!! In the middle column we add col-md-6</p>
+        
+            After:
+        
+            <div class="row">
+                <div class="col">a</div>
+                <div class="col col-md-6 col-lg-8">b: col6 when medium&up, col-8 when large, auto distribution when smaller than med</div>
+                <div class="col">c</div>
+            </div>
+            when medium and up we have larger sized medium body that takes up six but when it goes smaller than medium it becomes evenly distributed again back to the initial col (auto layout exists)<br/>
+        
+        
+        
+            <h1>Logo time:</h1>
+            <img src="nucamp-logo.png" width=500" height="500"/>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae optio, illo dolor similique at labore, ut ipsam unde, qui nemo assumenda magnam neque illum ratione maiores exercitationem? Distinctio, praesentium culpa? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, saepe voluptas, voluptatem ipsum et nihil eaque ducimus distinctio cupiditate suscipit modi a. Reprehenderit atque natus optio. Vero facilis unde minus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ad? Natus, aspernatur totam architecto sequi porro quos est ducimus voluptatem possimus eos id quasi veritatis rerum odit illum accusamus doloremque!</p>
+        </div>
+        <hr/>
+
+
+        <!-- CODE CHALLENGE BOOTSTRAP WEEK 1 -->
+
+        Breakpoints: Extra small (default) is &lt; 576 (and up); Small (SM) is ≥ 576px; Medium (MD) is ≥ 768px; Large (LG) is ≥ 992px; Extra Large (XL) is ≥ 1200px.</b></i><br />
+  
+<!-- Below this is the section for you to edit -->
+
+<!--  First Row  -->
+<div class="container">
+    <div class="row">
+      <div class="col col-sm-2">
+        One
+      </div>
+      <div class="col col-sm-2">
+        Two
+      </div>
+      <div class="col"><!-- don't need col-sm-8 because eight is assumed out of what's left of 12 after filling up 2 and 2. -->
+        Three
+      </div>       
+    </div>
+  
+<!--  Second row  -->
+<!--     No need to give col-md- tags to Four and Six because it takes what's left & evenly distributed of the 12 after Five takes u 6/12 -->
+    <div class="row">
+      <div class="col">
+        Four
+      </div>
+      <div class="col col-md-6">
+        Five
+      </div>
+      <div class="col">
+        Six
+      </div>      
+    </div>  
+  
+<!--  Third row  -->
+    
+    <div class="row">
+      <div class="col-12 col-lg-4">
+        Seven
+      </div>
+      <div class="col-12 col-lg-4">
+        Eight
+      </div>
+      <div class="col-12 col-lg-4"> <!-- this final one could just be col and it would work too, but seems more legit to make it consistent to show intent -->
+        Nine
+      </div>         
+    </div>
+</div>   
+<!-- Above this is the section for you to edit -->
+
+<br />
+
+<p>Inside the HTML section of this Codepen is the code for a Bootstrap container with three rows, each currently containing three columns of equal width. This Bootstrap container is visible above.<p>
+  
+<p>There is a CSS style applied so that you can see the outline of each column in green, just as a visual aid. The size of your current viewport is also displayed, so that you can easily see when you are hitting certain breakpoints. To change the viewport size, you can resize the width of the Result section/resize your browser. (It is not recommended to use the browser developer tools to change the viewport for this challenge; it will not work well with the Codepen display.)</p>
+
+<p>Hint: The Codepen linked <a href="https://codepen.io/minae/pen/BaaNEmP?editors=1000" target="_blank">here</a> contains a small demo that can help you with this challenge.</p>
+
+<h3>Your Challenge:</h3>
+
+<ol>
+  <li>Make sure that you are logged into your Codepen account, or create a Codepen account if you have not already. Use the "Fork" button in the lower right of your screen to create a copy of this code for your own use. Do not edit the original Codepen, as you will not be able to save your edits.</li>
+  <li>Edit the classes for the columns in the first row so that when the viewport is SM and up (576px or higher), the columns with the words "One" and "Two" inside them each span across two (of the 12 possible) columns for their row and the "Three" column spans across the remaining columns for the same row. For viewports below size SM, the three columns should remain of equal width.<br/>(col-sm-2, col-sm-2 & col-sm-8)</li>  
+  
+  
+  
+  <li>Edit the classes for the columns in the second row so that when the viewport is size MD and up (768px or higher) the column with the word 'Five' inside it spans across 50% of its row (i.e. spans 6 columns), and the columns for 'Four' and 'Six' span across the remaining columns equally (so they both take up 25% each). For viewports that are below size MD, the three columns should remain of equal width. <br/> (col col-md-6 on FIVE)</li>
+  
+  
+  <li>Edit the classes for the columns in the third row so that when the viewport is size LG and up (992 px and higher), the columns remain at equal width as they are now, but for sizes below LG, the columns stack on top of each other.<BR/>
+  (col-12 [FOR ALL BELOW LG] && col-lg-4 [LG & ABOVE])</li>
+<li>Submit the URL of your forked version of this Codepen as your answer to this Code Challenge in the Nucamp learning portal. </li>
+</ol>
+<p>You will only need to change code in the HTML section to complete this challenge, not the CSS or JS sections.</p>
+<p>You will not be graded on this challenge. It will be used for class discussion and knowledge assessment. Please submit your attempt before your Saturday workshop, even if it's not working completely.</p>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- LINKING JAVASCRIPT: JFOOTER MUST COME FIRST
+    THEN POPPER.JS
+    THEN BOOTSTRAP JAVASCRIPT PLUGINS -->
+
+    <SCRIPT SRC="node_modules/jquery/dist/jquery.slim.min.js"></SCRIPT>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+<!-- taking notes while I'm "studying", or pretending to, don't mind me -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +14,16 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 
     <!-- Additional CSS must be placed AFTER Boostraping CSS -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
     <link rel="stylesheet" href="css/styles.css">
 
     <title>NUCAMP A BETTER WAY TO CAMP</title>
-
 </head>
 
 <body>
+<a href="notes.html"><h6 class="text-right">NOTES FOR BOOTSTRAP</h6></a>
+
 
 <!-- APPLYING BOOSTRAP EXERCISE TO OUR PRESENT WEBSITE -->
     <header class="jumbotron jumbotron-fluid">
@@ -37,19 +40,52 @@
         </div>
     </header>
 
+
+
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+        <div class="container"> <!--this container is for some reason added as last to the nav practice-->
+            <!-- Button toggler -->
+            <button class="navbar-toggler ml-auto" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#nucampNavbar">
+            <!-- ML AUTO: pushing the button to the right (margin-left-auto) 
+                *auto in this case means zero*-->
+                <span class="navbar-toggler-icon"></span>
+                <!-- <span>+</span> (best to use! if no toggler icon used, IMO)-->
+            </button>
+            <!-- After button is made we need to give the following ul navbars a new div with two classes: collapse & navbar-collapse -->
+            <div class="navbar-collapse collapse" id="nucampNavbar">
+                <ul class="navbar-nav">
+                    <!-- i classes:  <i class="fa fa-WHATYOUWANT fa-SIZE">  " -->
+                    <li class="nav-item active"><a class="nav-link" href="#">
+                        <i class="fa fa-home fa-lg"></i> Home</a></li>
+                    <li class="nav-item"><a  class="nav-link" href="aboutus.html">
+                        <i class="fa fa-info fa-lg"></i> About</a></li>
+                    <li class="nav-item"><a  class="nav-link" href="#">
+                        <i class="fa fa-list fa-lg"></i> Sites</a></li>
+                    <li class="nav-item"><a  class="nav-link"  href="#">
+                        <i class="fa fa-address-card fa-lg"></i>Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- Boostrap's nav bar shrinks into a togger when smaller -->
+
+
+
     <div class="container">             <!-- FIRST DIV -->
         <div class="row row-content
         align-items-center"> <!--row content we will set up ourselves-->
             <div class="col-sm-4 order-sm-last col-md-3"><!--xs not defined! Which means if resizing goes below SMALL these tables/rows/columns will take up EQUAL AMOUNT OF SPACE-->
-                <!-- This would pick up small viewport of four/12 of columns of this row, which is a third of the row. but when size is medium, this col medium three class would take over and make this column pick up three out of 12 columns which is a quarter of this row -->
-                <!-- When SM-LAST is put in, the reverse of order will happen and it'll apply to small and beyond -->
+            <!-- This would pick up small viewport of four/12 of columns of this row, which is a third of the row. but when size is medium, this col medium three class would take over and make this column pick up three out of 12 columns which is a quarter of this row -->
+            <!-- When SM-LAST is put in, the reverse of order will happen and it'll apply to small and beyond -->
                 <h2 class="text-sm-right">1st DISCOVER & REVIEW</h2>
                 <!-- This will make small and up viewports align to the RIGHT -->
             </div>
 
             <div class="col">
                 <H2>Our Campsites</H2>
-                <P>Explore our database & curated campsites & leave your own reviews</P>
+                <P  class="d-none d-sm-block">Explore our database & curated campsites & leave your own reviews</P>
             </div>
         </div>
 
@@ -57,11 +93,11 @@
         <div class="row row-content align-items-center">
             <div class="col-sm-4 col-md-3">
                 <!-- If extra small, as not defined above, this column will by default will pick up all 12 columns of the row and the second column will get bumped down and stacked vertically -->
-                <h2>2nd. FEATURED CAMPSITES</h2>
+                <h2>2nd FEATURED CAMPSITES</h2>
             </div>
             <div class="col">
                 <H3>React Lake Campground</H3>
-                <P>Nesteld in the foothills of Chrome mountains this campground is on the shores of the pristine React Lake is a favourite for fly fishers</P>
+                <P  class="d-none d-sm-block">Nesteld in the foothills of Chrome mountains this campground is on the shores of the pristine React Lake is a favourite for fly fishers</P>
             </div>
         </div>
         
@@ -74,14 +110,13 @@
 
             <div class="col">
                 <H3>Boot Strap outfitters</H3>
-                <P>Bootstrap outfitters supply you with gear you need at a price you cannot beat</P>
+                <P  class="d-none d-sm-block">Bootstrap outfitters supply you with gear you need at a price you cannot beat</P>
             </div>
         </DIV>
     </div>
 
 
     <footer> 
-    <!-- fOOTER starts off with three div columns that would otherwise be in the same row! -->
     <div class="container">
         <div class="row">
 
@@ -93,153 +128,33 @@
 
                 <h5>LINKS </h5>
                 <ul class="list-unstyled">
-                    <li>(when offsetted it jumps further towards the right as the whole div)</li>
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">sites</a></li>
-                    <li><a href="#">contact</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="aboutus.html">ABOUT</a></li>
+                    <li><a href="#">SITES</a></li>
+                    <li><a href="#">CONTACT</a></li>
                 </ul>
             </div>
         
-
             <div class="col-6 col-sm-5 text-center">
             <!-- text-center wasn't specified @ a breakpoint therefore it'll apply for ALL viewports -->
             <!-- When it's XS it will span across 6/12th, and when it's small it'll span across 5/12th -->
                 <h5>SOCIAL</h5>
-                    <a href="#">IG</a>
-                    <a href="#">FB</a>
-                    <a href="#">TWITTER</a>
-                    <a href="#">YOUTUBE</a>
-                </ul>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
             </div>
 
             <DIV class="col-sm-4 text-center"> 
             <!--notice XS undefined which means it'll take the FULL WIDTH of the XS viewports-->
             <!-- But as per defined when it is small it sans across 4/12 of columns -->
-                TEL: 1 800 911 9111<BR/>
-                EMAIL: CAMPSITES@NUCAMP.CO
+                <i class="fa fa-phone fa-lg text-primary"></i> 1 800 911 9111<BR/>
+                <i class="fa fa-envelope fa-lg text-primary"></i> CAMPSITES@NUCAMP.CO
             </DIV>
         </div>
     </div>
     </footer>
     <!-- Up to this point, we set up a responsive web site -->
-
-
-
-
-
-
-
-
-
-
-<hr/>
-    <!-- Container class fluid means make it fixed and adjustable to resizing-->
-    <div class="container"><!-- Fixed container means that it resizes at certain viewpoints -->
-        <div class="row">
-                    <!-- Hello? (don't do anything like this in row) -->
-                    <!-- Each bootstrap row can have 1-12 columns -->
-                    <div class="col">1</div>
-                    <div class="col">2</div>
-                    <div class="col">3</div>
-                    <div class="col">4</div>
-                    <div class="col">5</div>
-                    <div class="col">6</div>
-                    <div class="col">7</div>
-                    <div class="col">8</div>
-                    <div class="col">9</div>
-                    <div class="col">10</div>
-                    <div class="col">11</div>
-                    <div class="col">12</div>
-                </div>
-        
-            <div class="row">
-                <div class="col">ONE</div>
-            </div>
-        
-            <div class="row">
-                <!-- A row can have 12 colums in total -->
-                <div class="col-4">ABCD</div><!-- takes up 1/3rd -->
-                <div class="col">BCDEF</div><!-- takes up 2/3rd. You don't have to specify eight, it just calculates 12minus4 -->
-            </div>
-        
-            <div class="row">
-                <div class="col-7">This column spans across seven slots out of 12</div>
-                <div class="col">This takes up the rest (5)</div>
-            </div>
-        
-            <div class="row">
-                <div class="col">Equal</div>
-                <div class="col">Equal</div>
-                <div class="col">Equal</div>
-            </div>
-        
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Hello? (don't do anything like this in row) -->
-                    <div class="col">Container</div>
-                    <div class="col">Fluid</div>
-                </div>
-            </div>
-        
-            <div class="row">
-                <div class="col">distributed/12</div>
-                <div class="col-6">col-6</div>
-                <div class="col">distributed/12</div>
-            </div>
-        
-            <div class="row">
-                <div class="col-1">col-1</div>
-                <div class="col-2">col-2</div>
-                <div class="col-4">col-4</div>
-                <div class="col-5">col-5</div>
-            </div>
-        
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <B>GRID BASICS RECAP:</B><BR/><BR/>
-                        - MUST USE CONTAINER, ROW, AND COLUMN CLASSES<BR/>
-                        - ALL CONTENT GOES INSIDE THE COLUMN DIVS ONLY<BR/>
-                     ---(12 POTENTIAL COLUMNS IN EACH ROW)<BR/>
-                      - SPECIFY HOW MANY COLUMNS TO SPAN USING COL-#<BR/>
-                      - YOU LEAVE # OUT BOOT STRAY AUTO LAYOUT LETS THAT COLUMN TAKE UP WHATEVER SPACE IS AVAILABLE<BR/>
-                       - IF YOU LEAVE # OUT FROM MULTIPLE COLUMNS BOOTSTRAP MAKES EM EQUAL IN WIDTH
-        
-                       <H1>BREAKPOINTS BOOTSTRAP</H1>
-            (xs)			< 576px (default if not specified)<BR/>
-            SM			>=576px<BR/>
-            MD			>= 768px<BR/>
-            LG			>= 992px<BR/>
-            XL			>= 1200px<BR/>
-                    </div>
-                </div>
-            </div>
-            Before:
-            <div class="row">
-                <div class="col">assumed XS applied same way for all viewports</div>
-                <div class="col">these classes unspecified so it means XS and up</div>
-                <div class="col">these column classes are currently applied for ALL VIEWPORTS</div>
-            </div>
-            
-            <p>What if we want the TOP ROW to display differently for viewports size medium and up? I want it to look the same as it does now for XS and S, but I want middle column to be bigger for viewports M and up!! In the middle column we add col-md-6</p>
-        
-            After:
-        
-            <div class="row">
-                <div class="col">a</div>
-                <div class="col col-md-6 col-lg-8">b: col6 when medium&up, col-8 when large, auto distribution when smaller than med</div>
-                <div class="col">c</div>
-            </div>
-            when medium and up we have larger sized medium body that takes up six but when it goes smaller than medium it becomes evenly distributed again back to the initial col (auto layout exists)<br/>
-        
-        
-        
-            <h1>Logo time:</h1>
-            <img src="nucamp-logo.png" width=500" height="500"/>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae optio, illo dolor similique at labore, ut ipsam unde, qui nemo assumenda magnam neque illum ratione maiores exercitationem? Distinctio, praesentium culpa? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, saepe voluptas, voluptatem ipsum et nihil eaque ducimus distinctio cupiditate suscipit modi a. Reprehenderit atque natus optio. Vero facilis unde minus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ad? Natus, aspernatur totam architecto sequi porro quos est ducimus voluptatem possimus eos id quasi veritatis rerum odit illum accusamus doloremque!</p>
-        </div>
-        <hr/>
 
     <!-- LINKING JAVASCRIPT: JFOOTER MUST COME FIRST
     THEN POPPER.JS

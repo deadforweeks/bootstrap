@@ -25,11 +25,12 @@ footer{
     /* to pad 30px to all four sides */
     background-image:linear-gradient(to right, navy, blue, teal);
     color: whitesmoke;
+    margin:0;    /* as defined by jumbotron library, margin is at a value where it pushes itself from other items below */
 }
 
 .row-content {
     padding: 50px 0;
-    border-bottom: 1px ridge;
+    /* border-bottom: 1px ridge; */
     min-height:200px;
     /* 50px top and bottom and zero pixels left/right */
 }
@@ -38,12 +39,6 @@ footer{
     color:coral;
 }
 
-
-
-
-
-
-
 /* From previous lesson, just borders: */
 img {
     max-width:100%;
@@ -51,17 +46,21 @@ img {
 }
 
 .container, container-fluid {
-    border: solid lightblue;
+    /* border: solid lightblue; */
 }
 
 .row{
-    border: dotted rgb(161, 161, 161);
+    /* border: dotted rgb(161, 161, 161); */
 }
 
 .row div {
-    border: dashed lightgreen;
+    /* border: dashed lightgreen; */
 }
 
 .row-content {
 
+}
+
+.navbar {
+    background-color:darkorchid;
 }
