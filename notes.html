@@ -16,12 +16,91 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
     <link rel="stylesheet" href="css/styles.css">
 
+        <style>
+            /* This is image fluid class:
+            img {
+                max-width:100%;
+                /* So it iwll never be larger than height that the viewport allows */
+                /* height:auto;     */
+                /* //so height will scale proportionally if width changes */
+            /*  */
+
+            /* img-thumbnail {} */ 
+        </style>
+
     <title>NUCAMP A BETTER WAY TO CAMP</title>
 
 </head>
 
-<body>
-    <!--    WEEK 2 BOOTSTRAP-->
+<body><!--    WEEK 2 BOOTSTRAP-->
+    <h1>Images</h1>
+    
+    <div class="media">
+    <img class="img-fluid img-thumbnail" src="unicorn.jpg">
+    <div class="media-body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptate sequi error, dolore, consectetur recusandae dignissimos, architecto asperiores laboriosam necessitatibus tempora labore possimus eveniet cupiditate unde assumenda veniam. Rem, iure.
+    </div>
+    </div>
+
+    <h1>Bootstrap Card demo</h1>
+        <div class="card" style="width:20rem; height:50rem">JUST THE CARD ITSELF WITHOUT THE BOOTSTRAPPED GRIDS: Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus incidunt, deserunt est quas sapiente quasi pariatur repellat sunt iure sit dignissimos numquam inventore odit doloremque? Nesciunt eum vel tempora recusandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit earum laudantium, qui maiores libero veritatis natus perferendis iure nostrum quis quod quos, inventore ad in ex soluta id corporis facere? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ullam inventore eveniet rerum debitis vero nihil sint laudantium possimus dicta, fugiat, deserunt tempore ab repellendus rem aut sequi vitae ipsam!</div>
+
+    We can also make this into a div class and everything so it is within grid.
+
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card ">
+                        <h3 class="card-header bg-info text-light">LOREM IPSUM BITCHES</h3>
+                        <div class="card-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias mollitia illum pariatur dignissimos corrupti obcaecati distinctio animi facere minus atque iure, natus tempore consequatur repellat impedit, cum commodi praesentium accusantium.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+<hr/>
+    <h1>Bootstrap Table Demo</h1>
+    <div class="table-responsive">
+    <!-- This adds a scroll bar right underneath the table -->
+        <table class="table table-dark table-bordered">
+            <thead class="thead-light">
+            <!-- This is table head -->
+                <tr>
+                <!-- TR represents table row -->
+                    <!-- TD represents single cell, but headers because first column is bolded -->
+                    <th>Breakpoint</th>
+                    <th>Extra Small</th>
+                    <th>Small</th>
+                    <th>Medium</th>
+                    <th>Large</th>
+                    <th>Extra Large</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                    <th>Viewport Width</th>
+                    <td>&lt; 576px</td>
+                    <td>&ge; 576px</td>
+                    <td>&ge; 768px</td>
+                    <td>&ge; 992px</td>
+                    <td>&ge; 1200px</td>
+            </tr>
+            <tr>
+                    <th>Column Clas Prefix</th>
+                    <td>&lt; .col-</td>
+                    <td>&ge; .col-sm-</td>
+                    <td>&ge; .col-md-</td>
+                    <td>&ge; .col-lg-</td>
+                    <td>&ge; .col-xl-</td>
+            </tr>
+            </tobody>
+
+        </table>
+    </div>
 
     <div class="bg-primary text-white p-3 ml-lg-5 m mt-5">Spacing & colour utility classes demo</div>
     <!-- p-3 padding:3  
@@ -44,11 +123,13 @@
     <!-- WEEK 1 BOOT STRAP START -->
 <!-- <a href="aboutus.html"><h1>About Us</h1></a> -->
 <!-- APPLYING BOOSTRAP EXERCISE TO OUR PRESENT WEBSITE -->
-    <header class="jumbotron jumbotron-fluid">
-    <!-- Jumbotron high lights / emphasizes and covers a whole goddamn area 
+    <header class="jumbotron jumbotron-fluid"><!-- Jumbotron high lights / emphasizes and covers a whole goddamn area 
     Jumbotron fluid removes the curved corners-->
         <div class = "container">
             <div class = "row">
+                <div class="col-4 col-sm-3 col-md-2 align-self-center">
+                    <img src="img/logo.png" class="img-fluid" />
+                </div>
                 <div class = "col"> 
                 <!-- Default: XS size as col/bootstrap is configured -->
                 <h1 class="nucamp">NUCAMP</h1>

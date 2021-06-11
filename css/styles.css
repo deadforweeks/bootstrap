@@ -14,7 +14,7 @@ header h2 {
     color:pink;
 }
 
-footer{
+.site-footer{
     background-image:linear-gradient(pink,rgb(250, 221, 221));
     padding:20px 0;
 }

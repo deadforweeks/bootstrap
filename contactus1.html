@@ -1,0 +1,79 @@
+<!-- taking notes while I'm "studying", or pretending to, don't mind me -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--viewport metatag
+    sets current width to the device's width,
+    and sets the scale to 1 which is the device's x/y.
+    Basically if the below viewport <> is crossed out, it looks like crap with the width which you have to scroll back and forth in order to read the horizontal axis of the hwole page. If viewport is enabled it helps to wrap.is -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS: -->
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/> -->
+
+    <!-- Additional CSS must be placed AFTER Boostraping CSS -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>NUCAMP A BETTER WAY TO CAMP</title>
+</head>
+
+<body>
+    <!-- APPLYING BOOSTRAP EXERCISE TO OUR PRESENT WEBSITE -->
+    <header class="jumbotron jumbotron-fluid">
+        <!-- Jumbotron high lights / emphasizes and covers a whole goddamn area 
+        Jumbotron fluid removes the curved corners-->
+            <div class = "container">
+                <div class = "row">
+                    <div class="col-4 col-sm-3 col-md-2 align-self-center">
+                        <img src="img/logo.png" class="img-fluid" />
+                    </div>
+    
+                    <div class = "col"> 
+                    <!-- Default: XS size as col/bootstrap is configured -->
+                    <h1 class="nucamp">NUCAMP</h1>
+                    <H2>A BETTER WAY TO CAMP</H2>    
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+    
+    
+        <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+            <div class="container"> <!--this container is for some reason added as last to the nav practice-->
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" height="30" width="30">
+                </a>
+                <!-- Button toggler -->
+                <button class="navbar-toggler" 
+                type="button" 
+                data-toggle="collapse" 
+                data-target="#nucampNavbar">
+                <!-- ML AUTO: pushing the button to the right (margin-left-auto) 
+                    *auto in this case means zero*-->
+                    <span class="navbar-toggler-icon"></span>
+                    <!-- <span>+</span> (best to use! if no toggler icon used, IMO)-->
+                </button>
+                <!-- After button is made we need to give the following ul navbars a new div with two classes: collapse & navbar-collapse -->
+                <div class="navbar-collapse collapse" id="nucampNavbar">
+                    <ul class="navbar-nav">
+                        <!-- i classes:  <i class="fa fa-WHATYOUWANT fa-SIZE">  " -->
+                        <li class="nav-item"><a class="nav-link" href="index.html">
+                            <i class="fa fa-home fa-lg"></i> Home</a></li>
+                        <li class="nav-item"><a  class="nav-link" href="aboutus.html">
+                            <i class="fa fa-info fa-lg"></i> About</a></li>
+                        <li class="nav-item"><a  class="nav-link" href="#">
+                            <i class="fa fa-list fa-lg"></i> Sites</a></li>
+                        <li class="nav-item active"><a  class="nav-link"  href="#">
+                            <i class="fa fa-address-card fa-lg"></i>Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav><!-- Boostrap's nav bar shrinks into a togger when smaller -->
+    
+</body>
+</html>
