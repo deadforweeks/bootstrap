@@ -64,3 +64,23 @@ img {
 .navbar {
     background-color:darkorchid;
 }
+
+.tab-content {
+    border: 1px solid #000;
+    border-top: none;
+    padding: 10px;
+}
+
+.carousel-caption {
+    /*carosel caption box - 0 0 0 means black and .5 means transparent*/
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel {
+    border:solid #5637DD;
+}
+
+.carousel-item {
+    min-height:363px;
+    
+}

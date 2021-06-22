@@ -1,0 +1,247 @@
+<!-- JUNE 18TH Notes -->
+
+<!-- bootstrap utilities
+Primary: blue, get your eyes on this ASAP
+secondary: gray, used to pair up with another component. You see it with a fade or cancel button, grayish colour. Cancel button is mostly used
+success, or danger, or warning...
+Warning: danger occurred, please try again. Letting your clients know something happened...  So they are not refreshing. 
+
+Other colours are findable via bootstrap manual - utilities - colours
+containing text-light
+text-dark
+text-body
+text-muted
+text-white
+
+Spacing - combination of margins, spacing, size, numbers
+
+m - margin
+p - padding
+
+spacing: nothing bigger than five.
+
+.p-3
+.px-2
+if not a size then it wants the whole default size
+
+navbar, table, card doesn't have jabascript attached to them. Except for navbar-expand-collapse. They don't have javascript tied to them.
+
+
+
+
+ You cannot use a random data attributes. -->
+<!-- you cannot say <div class="row" firstRow> if you just wnated a first line. That isn't how HTML shit works. HTML realized that hey developers ned some shit to make it unique so they invented data-WHATEVER, you can name it whatever you wanted. -->
+
+<!-- data is unique to this element. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script>
+  //JS function
+function order() {
+  const message = document.querySelector("#message");
+  ////querySelector means searching function, searching specifically for an ID named message. It's gonna grab the element of <div id="message">
+  //it's possible to use "is it possible to also use .innerHTML instead of grabbing the value in JS?" YES it's possible but you don't need to grab so much, you just need to grab certain thing
+  
+  //we want the input with the checked attribute. by default the mint chocolate is first checked. 
+  //checked input = <input type=icecreamfalvour id="mintchocolate">
+  //it's changed when input button is changed
+  
+  const checkedInput = document.querySelector("input:checked");
+
+        // document.querySelector("label.btn.btn-success.active");   or document.querySelector("div");
+        
+        //check if any input checkbox is checked, it's a boolean value, so if checkedInput is true then we check which radio box is inputed:
+  
+  //checkInput is a boolean value
+  if (checkedInput) {
+    message.textContent = `You have placed an order for ${checkedInput.value}.`;
+  } else {
+    message.textContent = "Unknown order.";
+  }
+}
+
+// SWITCH EXERCISE
+const age=15;
+//best practice: always condition for a true statement
+if (age>=16) {
+    console.log("You are old enough to drive");
+} else {
+  console.log("You are too young to drive")
+}
+
+const drinkSize = "small";
+switch(drinkSize)  //what are you evaluating? 
+  {
+      //is the drinksize= "small"
+    case "small":
+      console.log("A small drink's ten ounces")
+      break;
+      //is drinksize=medium?
+    case "medium":
+      console.log("A medium drink's 16 ounces")
+      break;
+      // is drinksize=large?
+    case "large":
+      console.log("A large drink is 22 ounces")
+      break;
+      //
+    default:
+      console.log("unknown");
+      break;
+  }
+</script>
+</head>
+
+<body>
+  <ul>
+      <li onclick="showDetails(this)" id="owl" data-animal-type="bird">Bird</li>
+      <li onclick="showDetails(this)" id="salmon" data-animal-type="fish">Fish</li>
+      <li onclick="showDetails(this)" id="tarantula" data-animal-type="spider">Tarantula</li>
+  </ul>
+
+<!-- bootstrap defined; data-ride.
+If you're using bootstrap and you see data-ride, it's already defined You cannot use it. -->
+
+<!-- NAV bars:
+nav is when you click on a link, it stays on the same section, but it just shuffles the content.
+for the nav, basic component, it just gives you a tabular TABS. You can use it to jump from page to page. -->
+
+<!-- Nav is doable with ismply just UL -->
+<!-- nav is identifiable by data attributes -->
+<!-- If you use tabs then your data toggle is tabs... If you are using data-toggle is pills, then your data toggle is pill. -->
+<ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+
+<div class="tab-pane fade show presentation">
+
+</div>
+
+<!-- In class exercise: Bootstrap RAdio Buttons -->
+
+<nav class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">
+        Active
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+</nav>
+<!-- You can choose between tabs, or buttons (pills) -->
+
+
+<!-- Triggering collapse: better with buttons or A anchors, because it has a click /trigger action -->
+<!-- just add data-toggle="collapse" and href="#elementCollapseEample" -->
+<!-- You can only collapse one element and not other elements. -->
+
+
+  <div class="container">
+    <div class="row m-5">
+
+        <div class="col-6">"
+        <!-- IF you have a class collapse, class collapse mean default hidden IF you don't have it. Default collapse means collapse hidden  -->
+            <div class="collapse" id="collapseExample">
+                This is a paragraph within
+                <!-- If you want somethign to be hidden inside of a collapse it must be insdie of a collapse div. Like an A tag or button -->
+            </div>
+        </div>
+
+
+        <!-- MODAL -->
+        <!-- before modals we used to redirect users to another page -->
+        <!-- Now we just have it pop up. When you complete a page you want it to go back to anotehr page. You need to go back to the original page after you enter certain thing, That's why MODAL is created. -->
+        <!-- three parts to a modal: Header is optional, footer is optional, MODAL is required -->
+    </div>
+    <button type="button" class="btn" data-toggle="modal" data-target="#idModalName"></button>
+  </div>
+
+  <script>
+    // declare variables with let, var, and const
+
+  </script>
+
+
+<!-- Class CodePens -->
+
+<div class="container-fluid">
+  <form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Ice Cream Flavors:</label>
+<!-- Your code additions will go below here. -->
+
+<div class="btn-group btn-group-toggle col-4" data-toggle="buttons">
+  
+  <label class="btn btn-success active">
+    <input type="radio" name="iceCreamFlavour" value="Mint Chocolate" id="mintchocolate" checked> Mint Chocolate </label>
+    
+<!--  Masking the radio button to look like a button. We style radio buttons like buttons. Radio button is BEHIND the labels.  -->
+  <label class="btn btn-light">
+    <input type="radio" name="iceCreamFlavour" value="Vanilla" id="vanilla"> Vanilla
+  </label>
+  
+  <label class="btn  btn-danger">
+    <input type="radio" name="iceCreamFlavour" value="Strawberry" id="strawberry"> Strawberry </label>
+</div>
+      
+<!-- Your code additions will go above here. -->
+    </div>
+    <div class="form-group row mx-auto">
+      <button type="button" onclick="order()" class="btn btn-primary">Order</button>
+    </div>
+  </form>
+</div>
+
+<div id="message"></div>
+
+<hr />
+<p>
+  The code you will update for this Code Challenge is inside the HTML section of this Codepen. You are not required to change any code in the JS or CSS sections.</p>
+
+<p>
+</p>
+<h3>Code Challenge</h3>
+<ol>
+  <li>You will be adding a button group to the form in the HTML section of this Codepen, using the plugin that is documented <a href="https://getbootstrap.com/docs/4.5/components/buttons/#checkbox-and-radio-buttons" target="_blank">here</a>. <strong>Read</strong> the documentation, then <strong>copy</strong> the example code for the three radio buttons there. <strong>Paste</strong> the example code to beneath where you see the comment that says <strong>"Your code additions will go below here."</strong></li>
+  <li>Add the class <strong>col-4</strong> to the <strong>button-group</strong> div (the div element that has the button-group class on it).</li>
+  <li>All radio buttons in a group must have the same <strong>name</strong>. Give all three radio buttons the name of <strong>"iceCreamFlavor"</strong>. </li>
+  <li>All <strong>id</strong>s must be unique. Give them these three ids: <strong>"mintchocolate"</strong>, <strong>"vanilla"</strong>, and <strong>"strawberry"</strong>.</li>
+  <li>Replace the text that follows each of the input elements (Active, Radio, Radio) with this text: <strong>Mint Chocolate</strong>, <strong>Vanilla</strong>, <strong>Strawberry</strong>.</li>
+  <li>Add a <strong>value</strong> attribute for each radio input, with the text <strong>"mint chocolate"</strong>, <strong>"strawberry"</strong>, and <strong>"vanilla"</strong>.</li>
+  <li>Using the <strong>Bootstrap button color classes</strong>, change the colors for each button so that they appear as in the screenshot below.</li>
+  <li>Select each button and click the <strong>"Order"</strong> button, one at a time, to make sure that the text "You have placed an order for ..." appears correctly for each button.</li>
+</ol>
+
+<hr />
+<h3>Resources</h3>
+<ul>
+  <li><a href="https://getbootstrap.com/docs/4.5/components/buttons/#button-plugin" target="_blank">Bootstrap Radio/Checkbox Button Group Plugin</a></li>
+  <li><a href="https://getbootstrap.com/docs/4.5/components/buttons/#examples" target="_blank">Bootstrap Button Color Classes</a></li>
+</ul>
+
+
+            
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+

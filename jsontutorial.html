@@ -1,0 +1,182 @@
+<!-- taking notes while I'm "studying", or pretending to, don't mind me -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--viewport metatag
+    sets current width to the device's width,
+    and sets the scale to 1 which is the device's x/y.
+    Basically if the below viewport <> is crossed out, it looks like crap with the width which you have to scroll back and forth in order to read the horizontal axis of the hwole page. If viewport is enabled it helps to wrap.is -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS: -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+
+    <!-- Additional CSS must be placed AFTER Boostraping CSS -->
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>JSON COURSE</title>
+
+
+</head>
+
+<body>
+    <a href="notes.html">
+        <h6 class="text-right">JSON</h6>
+    </a>
+
+
+
+    <!-- APPLYING BOOSTRAP EXERCISE TO OUR PRESENT WEBSITE -->
+    <header class="jumbotron jumbotron-fluid">
+        <!-- Jumbotron high lights / emphasizes and covers a whole goddamn area 
+    Jumbotron fluid removes the curved corners-->
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-sm-3 col-md-2 align-self-center">
+                    <img src="img/logo.png" class="img-fluid" />
+                </div>
+
+                <div class="col">
+                    <!-- Default: XS size as col/bootstrap is configured -->
+                    <!-- <h1 class="nucamp">JSON</h1> -->
+                    <H2>Json Tutorial</H2>
+                </div>
+
+                <div class="col-md-4 col-xl-2 mt-4">
+                    <a href="#reserveModal" role="button" data-toggle="modal" data-target="#reserveModal"
+                        class="btn btn-info btn-lg text-nowrap">Reserve Campsite</a>
+                    <!-- Don't breka up the words: NoWrap -->
+                    <!-- SRC hashtag is an indicator: to target an ID below -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <ul id="people"></ul>
+
+    <ul id="demo1"></ul>
+    
+    <script>
+        var jsonExample = {
+            "name": "Brad Traversy",
+            "age": 35,
+            "address": {
+                "street": "5 main st",
+                "city":"Boston"
+            },
+            "children":['Brianna','Nicholas']
+        }
+
+        // console.log(jsonExample);
+
+        var person = {
+            name:"Brad",
+            age:35,
+            address: {
+                street:"5 main st",
+                city:"Boston",
+            },
+            children:['Brianna', 'Nicholas'],
+            
+            email: function() {
+                return 'brad@gmail.com';
+            }
+        }
+
+        console.log(person.email() );
+
+        stringPerson = JSON.stringify(person);
+        console.log(stringPerson);
+        
+        document.write(stringPerson+"<br>");
+        document.write(person);
+        document.write(person.address.street);
+        document.write(person.children[1]);
+
+        var people = [
+            {
+                name: "Brad",
+                age:35
+            },
+            {
+                name: "John",
+                age:40
+            },
+            {
+                name:"Sara",
+                age:25
+            },
+            {
+                name:"Tommy",
+                age:124
+            },
+            {
+                name:"Yabadoodle",
+                age:32
+            }
+        ]
+        document.write("<br/>")
+        document.write(people[1].age);
+
+        var output = '';
+
+        for (var i=0; i<people.length; i++) {
+            console.log(people[i]);
+            console.log(people[i].name);
+            console.log(people[i].age);
+
+            output += '<li>' + people[i].name + '</li>';
+        }
+        document.getElementById('people').innerHTML = output;
+    
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                 // document.getElementById("demo1").innerHTML = xhttp.responseText;
+                 // console.log(xhttp.responseText);
+                 var response = JSON.parse(xhttp.responseText);
+                 var people = response.people;
+
+                 var output='';
+                 for (var i=0; i<people.length; i++) {
+                    output += '<li>' + people[i].name + '</li>';
+                 }
+                 document.getElementbyId('demo1').innerHTML=output;
+                
+                }
+            };
+
+        xhttp.open("GET", "sheeple.json", true);
+        xhttp.send();
+
+
+    </script>
+
+
+
+    <!-- LINKING JAVASCRIPT: JFOOTER MUST COME FIRST
+    THEN POPPER.JS
+    THEN BOOTSTRAP JAVASCRIPT PLUGINS -->
+    <SCRIPT SRC="node_modules/jquery/dist/jquery.slim.min.js"></SCRIPT>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip(); 
+        })
+
+        $(function() {
+            $('[data-toggle="popover"]').popover();
+        })
+    </script> -->
+
+</body>
+
+</html>
