@@ -1,0 +1,96 @@
+// SCSS GOTTA BE COMPILED TO CSS
+
+$color-primary: #3046C5;
+$color-secondary: #5637dd;
+$color-pale: #CEC8FF;
+$color-mid:#901CAD;
+$color-dark:#60106b;
+$color-black-transparent: rgba(0,0,0,0.5);
+
+$body-font: "Open Sans", "sans-serif";
+$header-font: "Lobster", cursive;
+
+body {
+    font-family: $body-font;
+}
+
+h1,h2,h3 {
+    font-family: "Lobster", cursive;
+}
+
+h2 {
+    color: $header-font;
+}
+
+header {
+    // SCSS allows nesting
+    h2 {
+        color: $color-pale; 
+    }
+    p {
+        //nest shit in here
+    }
+}
+
+.site-footer{
+    background-image:linear-gradient($color-pale, white);
+    padding:20px 0;
+}
+
+.jumbotron {
+    /* This is a bootstrap defined class: */
+    padding:60px; 
+    /* to pad 30px to all four sides */
+    background-image:linear-gradient(to right, $color-secondary, $color-primary, $color-dark);
+    color: whitesmoke;
+    margin:0;    /* as defined by jumbotron library, margin is at a value where it pushes itself from other items below */
+}
+
+.row-content {
+    padding: 50px 0;
+    /* border-bottom: 1px ridge; */
+    min-height:200px;
+    /* 50px top and bottom and zero pixels left/right */
+}
+
+.nucamp {
+    color:coral;
+}
+
+/* From previous lesson, just borders: */
+img {
+    max-width:100%;
+    height:auto;
+}
+
+.navbar {
+    background-color: $color-mid;
+}
+
+.tab-content {
+    border: 1px solid #000;
+    border-top: none;
+    padding: 10px;
+}
+
+.carousel-caption {
+    /*carosel caption box - 0 0 0 means black and .5 means transparent*/
+    background-color: color-black-transparent;
+}
+
+.carousel {
+    border:solid $color-secondary;
+}
+
+.carousel-item {
+    min-height:363px;
+    
+}
+
+
+#carouselButton {
+    position:absolute;
+    right: 0; 
+    bottom: 0;
+    z-index: 100;
+}
