@@ -3,19 +3,45 @@
 <html>
 <head>
 	<title>JQuery Training</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-	<script>
 
-	</script>
 
 	<h1>JQuery intro</h1>
 	<p>Plan your training right now</p>
 
 	<ul>
-		<li>I'm a list in HTML</li>
+		<li id="listID">I'm a list in HTML</li>
 		<li>I'm also a list</li>
 	</ul>
+	<div id="readyDemo"></div>
+
+
+
+	<script type="text/javascript">
+		// console.log(jQuery); is the same as
+		console.log($);
+		console.log('line 36')
+
+		$(document).ready( function() {
+			console.log('Document is ready');
+			//^^above will not show until everything is ready on this page and everything is ran.
+			${'div'} //jQuery willwill select all div's (not recommended)
+			$('#listID')
+		});	
+		//whole document .ready() -- it's a function, and what we pass inside the () of ready, is ANOTHER FUCNTION. When the document is ready, do another function.
+
+		//when document is ready call document.ready
+		console.log('line 29 after Doc is REady');
+		$(document).ready(function()
+		{
+			$("#readyDemo").text("Fuck off world ASAFP");
+			$("button").click(function() {
+
+			})
+		})
+	</script>
 
 </body>
 </html>
