@@ -1,2 +1,3 @@
 node_modules
+dist
 # This causes git to ignore node module folder

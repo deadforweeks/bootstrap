@@ -1,30 +1,91 @@
+div p {
+  font-family: 'Garamond', 'sans-serif';
+  text-align:justify;
+  font-size:1.1rem;
+  font-weight:bold;
+  color:rgb(58, 58, 58);
+}
+
+dd {
+  text-align:justify;
+}
+
+.comic {
+  font-family: 'Comic Sans MS', 'Comic Sans';
+}
+
+.stretched {
+  height:480px;
+  /* border:maroon 2px dashed; */
+}
+
+div img {
+  border-radius:20px;
+}
+
+.plated {
+  background-color:rgba(248, 248, 248, 0.575);
+  padding:10px;
+  border-radius:10px;
+}
+
+.disclaimer {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size:small;
+}
 body {
-  font-family: "Open Sans", "sans-serif"; }
+  font-family: "Helvetica", "serif";
+  margin-top:0px;
+  padding-top:0px;
+  background-image: linear-gradient(to left, rgb(175, 243, 255),rgb(86, 199, 243), rgb(175, 243, 255));
+  padding-top:0px;
+  /* font-size:18px; */
+}
 
 h1, h2, h3 {
-  font-family: "Lobster", cursive; }
+  font-family: "Lobster", "serif"; }
 
 h2 {
-  color: "Lobster", cursive; }
+  font-family: "Lobster", cursive; }
+
+/* header img { */
+  /* color:blue; */
+/* } */
 
 header h2 {
-  color: #CEC8FF; }
+  color: #000000; }
 
 .site-footer {
-  background-image: linear-gradient(#CEC8FF, white);
+  /* background-image: linear-gradient(#CEC8FF, white); */
   padding: 20px 0; }
 
+.site-footer h2 {
+  padding-bottom:30px;
+}
+
 .jumbotron {
-  /* This is a bootstrap defined class: */
-  padding: 60px;
+  background-image: linear-gradient(to left, rgb(175, 243, 255),rgb(86, 199, 243), rgb(175, 243, 255));
+  /* background-image: url("../main.jpg"); */
   /* to pad 30px to all four sides */
-  background-image: linear-gradient(to right, #5637dd, #3046C5, #60106b);
+  /* background-color:black; */
   color: whitesmoke;
   margin: 0;
-  /* as defined by jumbotron library, margin is at a value where it pushes itself from other items below */ }
+  /* as defined by jumbotron library, margin is at a value where it pushes itself from other items below */ 
+  }
+
+.jumbotron p {
+  font-size:1.4rem;
+  color:rgb(211, 92, 37)
+}
+
+.jumbotron img{
+  height:250px;
+}
+
+
 
 .row-content {
-  padding: 50px 0;
+  padding: 50px;
   /* border-bottom: 1px ridge; */
   min-height: 200px;
   /* 50px top and bottom and zero pixels left/right */ }
@@ -38,19 +99,51 @@ img {
   height: auto; }
 
 .navbar {
-  background-color: #901CAD; }
+  background-image: linear-gradient(to left, rgb(175, 243, 255),rgb(86, 199, 243), rgb(175, 243, 255));
+  /* border-top: 2px rgba(0, 0, 0, 0.452) solid; */
+  border-bottom: 2px rgba(0, 98, 116, 0.26) dotted;
+  padding: 4px 0px;
+ }
+
+ .nav-link {
+  color:maroon;
+ }
+
+ td {
+  text-align:right;
+  border-right: 1px navy solid;
+ }
+ th {
+   text-align:right;
+   border-right: 1px navy solid;
+ }
 
 .tab-content {
-  border: 1px solid #000;
+  border: 1px solid lightgray;
+  background-color:rgb(255, 255, 255);
   border-top: none;
-  padding: 10px; }
+  padding: 20px; 
+}
+.tab-content img {
+  width:100%;
+}
 
 .carousel-caption {
   /*carosel caption box - 0 0 0 means black and .5 means transparent*/
   background-color: color-black-transparent; }
 
 .carousel {
-  border: solid #5637dd; }
+  border-radius: 25px; 
+}
+.carousel p {
+  padding:8px;
+  border-radius:7px;
+  background-color:rgba(226, 226, 226, 0.555);
+  color:rgb(0, 0, 0);
+  font-weight:bolder;
+  font-size:1rem;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
 
 .carousel-item {
   min-height: 363px; }
@@ -60,3 +153,45 @@ img {
   right: 0;
   bottom: 0;
   z-index: 100; }
+
+ .modal-header {
+  background-image:linear-gradient(to left,rgb(16, 204, 179),rgb(0, 0, 66),rgb(16, 204, 179));
+  color: white; }
+
+#loginModal .modal-header {
+  background-color: #901CAD;
+  color: white; }
+
+.book {
+  color:rgb(247, 35, 141);
+}
+
+.imgRep {
+  border-radius:25px;
+  opacity:0.8;
+}
+
+div h1 {
+  padding-bottom:15px;
+}
+
+.back {
+  padding-bottom:60px;
+  /* border-bottom: 1px rgba(0, 0, 0, 0.26) solid; */
+  text-align:center;
+  justify-content:center;
+  /* text-align:end; */
+  margin: 0 auto;
+  font-weight:bold;
+  color:rgb(255, 108, 108);
+}
+
+.roomAvail {
+  background-color:rgb(34, 100, 161);
+  color:white;
+  font-weight:bold;
+}
+
+address {
+  font-size:small
+}

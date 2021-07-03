@@ -5,14 +5,17 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <!-- build:css css/main.css -->
+   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+   <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+   <link rel="stylesheet" href="css/styles.css">
+`   <!--endbuild-->
 
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+   <!-- Additional CSS must be placed AFTER Boostraping CSS -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+   <!-- ^^^above we can see Google font is not a local file thus after the endbuild comment -->
 
-    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
-    <link rel="stylesheet" href="css/styles.css">
 
     <title>NuCamp: A Better Way To Camp</title>
 </head>
@@ -21,7 +24,7 @@
 
     <header class="jumbotron jumbotron-fluid">
         <div class="container">
-            <div class="row"
+            <div class="row"></div>
                 <div class="col">
                     <h1>NuCamp</h1>
                     <h2>a better way to camp</h2>
@@ -176,10 +179,12 @@
     </footer>
 
     <!-- jQuery must come first, then Popper.js, then the Bootstrap JavaScript plugins.-->
-    <script src="./contactus_files/jquery.slim.min.js.download"></script>
-    <script src="./contactus_files/popper.min.js.download"></script>
-    <script src="./contactus_files/bootstrap.min.js.download"></script>
-
+    <!-- build:js js/main.js -->
+    <SCRIPT SRC="node_modules/jquery/dist/jquery.slim.min.js"></SCRIPT>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <!-- endbuild -->
 
 
 
