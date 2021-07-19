@@ -48,8 +48,14 @@ class Directory extends Component {
         //how do we create this array? use data from local state. we'll grab it from the state.
         const directory = this.state.campsites.map(campsite => {
             //we need a return from tis arrow function.
+
             return (
-                <div className="col">
+            //every child in list needs a key prop: ignorable but we will fix it in this case
+            //To render array of elements most eficiently you need to add a unique key attribute to the topmost element in each array item
+            //this helps react keep track of this list of items, and render changes to it efficiently.
+            //the unique ID we gave each campsite in the state can come in handy here
+            //(key={campsite.id})
+            <div key={campsite.id} className="col">
                     <img src={campsite.image} alt={campsite.name}/>
                     <h2>{campsite.name}</h2>
                     <p>{campsite.description}</p>
