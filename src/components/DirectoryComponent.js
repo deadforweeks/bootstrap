@@ -8,23 +8,34 @@ import { Card, CardImg, CardImgOverlay,  CardTitle } from 'reactstrap';     //re
 // Importing card componenets from reactbootstrap^^^ to be referred to from down render() parts of the campsites (return div...)
 // import CampsiteInfo from './CampsiteInfoComponent';   (this is now moved to main componenet)
 
+import {Link} from 'react-router-dom';
+//     ^^^setting up dynamic link
+
+
+
 //before we renderd stuff that didn't render or contain any state. such componenents are great components are good to turn into functional componenennt. We can turn the smaller componenet to functional componene.t
-function RenderDirectoryItem( {campsite, onClick} )    {
+function RenderDirectoryItem( {campsite} )  {   //removed onClick from the {parameters}
                               //^^^they are passed via a prop object, framed like this {campsite , onClick}
     return (
-        <Card onClick = { () => onClick(campsite.id) } > 
-                             {/* This ^^^will then store the id of the oncampsiteselect(campsiteId) component and it will store id from the MainComponenet states' selected campsite property . we need to also change campsite info componenet.*/}
+        <Card className="thisCard">
+        {/*^^^ previous <Card  onClick = { () => onClick(campsite.id) } > is removed  */}
+                    {/* This                          ^^^will then store the id of the oncampsiteselect(campsiteId) component and it will store id from the MainComponenet states' selected campsite property . we need to also change campsite info componenet.*/}
                     {/* The directory cmponenet no longer have any direct access to the ONCAMPSITE method, but react lets us pass react handlers as other handlers as PROPS. We can take the arrow function and take it to the main componenet and pass an onclick in MainComponenet directory as PROP. */}
-                    
-                        {/* Hereby replacing img and other tags with CardImg & Card__..... */}
-                        <CardImg width="100%" src={campsite.image} alt={campsite.name}/>
-                        <CardImgOverlay>
-                            <CardTitle>{campsite.name}</CardTitle>
-                            {/* <p>{campsite.description}</p> */}
-                            {/* <p>Elevation: {campsite.elevation}</p> */}
-                        {/* We see that all of this^^^ is still wrapped inside a <div> that has a unique key. */}
-                        </CardImgOverlay>
-                    </Card>
+
+            {/* Surrounding everything inside card component with a LINK component. Before we used Link in footer, to link to a String (./home)
+            Now we wanna do the same except /directory/1, /directory/2, /directory/3, and we wanna pass this in dynamically. */}
+            <Link to={`/directory/${campsite.id}`}> {/* use template literal ${} after directory/ path so whatever campsite you select it'll direct to a path you select 
+            This is just the link ^^^ you also need to add routing parameter to show right view when user clicks on this link (in MainComponenets)*/}
+                {/* below, replacing old plain img and other tags with CardImg & Card__..... */}
+                <CardImg width="100%" src={campsite.image} alt={campsite.name}/>
+                <CardImgOverlay>
+                    <CardTitle>{campsite.name}</CardTitle>
+                    {/* <p>{campsite.description}</p> */}
+                    {/* <p>Elevation: {campsite.elevation}</p> */}
+                {/* We see that all of this^^^ is still wrapped inside a <div> that has a unique key. */}
+                </CardImgOverlay>
+            </Link>
+        </Card>
     );
 }
 
@@ -105,7 +116,8 @@ function Directory(props) {
                     {/* </Card> */}
                     {/* //setting up an event handler for when one of these cards are CLICKED. When clicked we'll get a new card on the bootm that has more details on that particular campsite. */}
                     {/* ^^^^All of this will be changed with function componenets below: */}
-                    <RenderDirectoryItem campsite={campsite} onClick={props.onClick} />
+                    <RenderDirectoryItem campsite={campsite} />  {/* <<<  onClick={props.onClick} is removed */}
+                    {/* AFTER REMOVING ALL THE onClick's, CAMPISTE WILL NO LONGER BRING UP AN ERROR */}
                 </div>
             );
         }); //end of render

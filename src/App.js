@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import Main from './components/MainComponent';
 // ^^^changed from directory componenet to main component
 //all these^^^  imports that aren't using ./ Paths, they are coming from modules that are from node.module folder. How does one know where to look? by default webpack is doing work for you behind the scens to make it easier to import modules. So you put 'react' and it looks inside of node_modules and finds it there.
+import { BrowserRouter } from 'react-router-dom';
+
 // Therefore,
 //below, ./app makes it clear that you are not using webpack to find it there. 
 import './App.css';
@@ -40,9 +42,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-          <Main />
-      </div> 
+      <BrowserRouter>
+      {/*^^^ Making it the highest level componenet which returns from app which gives it main componenet from its chidlren. */}
+        <div className="App">
+            <Main />
+        </div> 
+      </BrowserRouter>
       );
   };
 }

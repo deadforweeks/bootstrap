@@ -8,7 +8,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
     function RenderCampsite({campsite}) {
         return (
-            <div className="col-10 m-2 selectedCamp">
+            <div className="col-12 col-sm-12 m-2 selectedCamp">
                 <Card>
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
@@ -25,7 +25,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
     function RenderComments({comments}) {   //when this is done {} it's destructuring something from a property
         if (comments) { //truthy statement if comment is there
           return (
-            <div className="col-10 m-2 comments">
+            <div className="col-11 col-sm-11 ml-4 mt-1 mb-4 comments">
                 <h3> Comments for this great campsite:</h3>
                 {/* <small>We encourage you to read the original camper's experience on the first premise first day before it all went downhill from there.</small> */}
                     {comments.map(comment => {
@@ -49,8 +49,10 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
             return (
                 <div className="container">
                     <div className="row">
-                        <RenderCampsite campsite={props.campsite} />    {/* {this.renderCampsite(this.props.campsite)} */}
-                        <RenderComments comments={props.campsite.comments} />  {/* {this.renderComments(this.props.campsite.comments)} */}
+                        <RenderCampsite campsite={props.campsite} />    {/*          before: {this.renderCampsite(this.props.campsite)} */}
+                        {/* <RenderComments comments={props.campsite.comments} />    before: {this.renderComments(this.props.campsite.comments)} */}
+                        {/* Above no longer works ^^^^^^ because we have comments in its own js file now. Replace above with the following: */}
+                        <RenderComments comments={props.comments} />
                     </div>
                 </div>
             );
