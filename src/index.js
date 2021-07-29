@@ -94,14 +94,20 @@ import './index.css';
 // import Foo from './App'; doesn't matter what the name is.
 // import { App } from './App';
 // ^^^^^you do this to tell the compiler that you're looking for something called App, from app.js , but otherwise, if app.js is your default model, you just import without the {}
+// import * as serviceWorker from './serviceWorker';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'typeface-lobster';
+import 'typeface-open-sans';
+import 'font-awesome/css/font-awesome.css';
+import 'bootstrap-social/bootstrap-social.css';
 import App from './App';
 // APP FUCNTION si imported as the app function in the function name plus location/name where ti's from. the ./ tells index js tells react to look in the same location of folder. The extension.js is left out. 
 // this ./ tells index.js to look @ the same folder as itself
 // we don't even have to use the name APP.js because there is only one default name export. WE can mae this FOO and it'd still grab the default . As long as you grab it at the end
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-//INDEX.JS IS NOT A MODULE BECAUSE THERE IS NOT A DEFAULT EXPORT!
+
+//INDEX.JS IS NOT A MODULE BECAUSE THERE IS NOT A DEFAULT EXPORT needed to reference it
 
       {/* You can tell when a react component is being used, first letter MUST be capitalized, as you see in App/ .
     It's analogous to function, a repeat Compoenent is a similar to a repeatable block of code. Like function you define a react compoonent with a syntax and call it with another syntax.
@@ -146,3 +152,9 @@ reportWebVitals();
 // Why use componenets?
 //reuseable piece of code like functions but w/ a specific purpose. like rendering different parts of UI. app components is like an exception to that that goes around everything, but other componenets are creating different parts of UI so they can be used over&over again to render different views that user sees in their screen. 
 //concept is similar to bootstrap componenents but all written in JS. You can make your custom componenets or bring 3rd party libraries. There are SO MANY in the libraries of react.
+
+// * * *
+
+//react developer tool for chrome & firefox:
+//profiling data is to monitor the speed of application. Beyodn the scope of this class apparently
+//componenets tab: you can see all the components seen on the page. click and get information on where states are being held. props. and other useful info.

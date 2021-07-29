@@ -1,5 +1,65 @@
-.App {
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color:skyblue;
+}
+.card {
+  border-radius:10px;
+}
+
+h1,h2,h3, .card-body>.card-title {  /* don't want all card titles to be lobster. However lobster will be used for campsiteinfo componenet card that is select campsite . There, card title is child of card body font. whereas in Directcomponent it isn't. So add this selector .card-body>.cardtitle -- this selects all card titles that our select chidlren that our card bodies. this selects for card titles that are direct children that are card bodies. 
+  this will apply to campsiteinfo copomennt card but not directcards*/
+  font-family:"Lobster", cursive;
+}
+
+.card-title {
+  text-align:center;
+  font-weight:500;
+  font-size:1.25rem;
+  /* font: 500 1.25rem "Lobster", cursive; */
+  color:rgb(94, 16, 3);
+  /* weight, size, first font preference, and second if first isn't installed */
+}
+
+h2 {
+  color:#3046C5;
+}
+
+/* select card titles that are within overlay images */
+.card-img-overlay .card-title {
+  color:white;
+  background-color:rgba(0,0,0,0.5);
+}
+
+.row-content {
+  padding:50px 0;
+  border-bottom:1px ridge;
+  min-height:200px;
+}
+
+.site-footer {
+  background-image: linear-gradient(#CEC8FF,white);
+  padding: 20px 0;
+}
+
+.jumbotron {
+  margin:0;
+  padding:30px;
+  background-image: linear-gradient(to right, #5637DD,#3046C5, #60106B);
+  color:white;
+}
+
+.jumbotron h2 {
+  color:#CEC8FF;
+}
+
+.navbar-dark {
+  background-color: #901CAD;
+}
+
+
+/* .App {
   text-align: center;
+  background-color:mistyrose;
 }
 
 .App-logo {
@@ -35,4 +95,17 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.comments {
+  background-color:rgba(227, 233, 227, 0.644);
+  border-radius:8px;
+  padding-top:10px;
+  color:rgb(131, 49, 49);
+}
+
+.userComment {
+  font-family:'Courier New', Courier, monospace;
+  font-weight:bolder;
+  color:black;
 }

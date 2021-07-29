@@ -1,34 +1,13 @@
 import React, {Component} from 'react';
-import {Navbar, NavbarBrand} from 'reactstrap';
-import Directory from './components/DirectoryComponent'
+//             ^^ brackets are something about 'not default'  (student explanation: { } allows import/export by name (which allows multiple export/imports per file) v.s. the standard 1 default export per file)
+// import {Navbar, NavbarBrand} from 'reactstrap';
+import Main from './components/MainComponent';
+// ^^^changed from directory componenet to main component
 //all these^^^  imports that aren't using ./ Paths, they are coming from modules that are from node.module folder. How does one know where to look? by default webpack is doing work for you behind the scens to make it easier to import modules. So you put 'react' and it looks inside of node_modules and finds it there.
 // Therefore,
 //below, ./app makes it clear that you are not using webpack to find it there. 
 import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           LEARN REACT 
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-
-
+//^^^then we'll use this array to set the local state in app:
 // How to define react Component? Two ways: Functional compoenent & Class component.
 
 // (1)
@@ -44,21 +23,30 @@ import './App.css';
 // ReactDOM.render(<App/>) is a self-closing tag. (class App is in App.js)
 //all shit we do in this unit will be rendered with a self-closing tag like <App/>
 
+// There are two different componenets: CLASS componenets and FUNCTIONAL components
+// Class components are created via CLASS (class also has a render method) - as shown below, whereas function is like 
+//  function App() 
+//  { }
+
+//class componenet:
 class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state= {
+  //     campsites: CAMPSITES
+  //     // (Next after ^^^this we gotta pass it down as props to the directory component )
+  //   };
+  // ^^^can delete the constructor now because everything's also moved to the maincomponent.js
+
   render() {
     return (
       <div className="App">
-        <Navbar dark color="primary">
-          <div className="container"> {/* We cannot say class=certain in JSX, we gotta say className */}
-            <NavbarBrand href="/">NuCamp</NavbarBrand>
-            {/* NavBar brand ^^^^ when we are using or rendering react componenets, the syntax is like <> angle brackets. The telltale sign that it's componenent, is gonna be the first letter. If it's capitalized you know it's React component. if it's lower case you're dealing with a JSX component. So Navbar is dealing w/ a react component. */}
-          </div>
-        </Navbar>
-        <Directory />
-      </div>
-    );
-  }
+          <Main />
+      </div> 
+      );
+  };
 }
+
 
 export default App; //this is referred to by ` import App from './App.js' ` from INDEX.js
 
