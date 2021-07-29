@@ -6,6 +6,13 @@ body {
   border-radius:10px;
 }
 
+.card img {
+  height:300px;
+}
+.selectedCamp img {
+  height:100%;
+}
+
 h1,h2,h3, .card-body>.card-title {  /* don't want all card titles to be lobster. However lobster will be used for campsiteinfo componenet card that is select campsite . There, card title is child of card body font. whereas in Directcomponent it isn't. So add this selector .card-body>.cardtitle -- this selects all card titles that our select chidlren that our card bodies. this selects for card titles that are direct children that are card bodies. 
   this will apply to campsiteinfo copomennt card but not directcards*/
   font-family:"Lobster", cursive;

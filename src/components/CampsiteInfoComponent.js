@@ -8,7 +8,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
     function RenderCampsite({campsite}) {
         return (
-            <div className="col-10 m-2 ">
+            <div className="col-10 m-2 selectedCamp">
                 <Card>
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
@@ -26,7 +26,8 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
         if (comments) { //truthy statement if comment is there
           return (
             <div className="col-10 m-2 comments">
-                <h3> Comment Box</h3>
+                <h3> Comments for this great campsite:</h3>
+                {/* <small>We encourage you to read the original camper's experience on the first premise first day before it all went downhill from there.</small> */}
                     {comments.map(comment => {
                     return (
                         <div key={comment.id}><br/>

@@ -12,8 +12,8 @@ class Header extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <h1>NuCamp</h1>
-                            <h2>A better way to camp tho</h2>
+                            <h1>WuCamp</h1>
+                            <h2>We offer places where you can camp in Wuhan, Hubei, China in order to bring back the lovely nostalgic year 2020.</h2>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ class Header extends Component {
             <Navbar dark sticky="top">
             {/* Stickytop navbar^^^ */}
                 <div className="container"> {/* We cannot say class=certain in JSX, we gotta say className */}
-                    <NavbarBrand href="/">NuCamp</NavbarBrand>
+                    <NavbarBrand href="/">WuHan Camp (Ain't Nuthin to Fuck With) <small>Click campsite to expand details at the bottom</small></NavbarBrand>
                     {/* NavBar brand ^^^^ when we are using or rendering react componenets, the syntax is like <> angle brackets. The telltale sign that it's componenent, is gonna be the first letter. If it's capitalized you know it's React component. if it's lower case you're dealing with a JSX component. So Navbar is dealing w/ a react component. */}
                 </div>
             </Navbar>

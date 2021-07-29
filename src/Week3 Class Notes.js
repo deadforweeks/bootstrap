@@ -63,3 +63,14 @@ const hotel = {
       return <div>{this.props.someData}</div>
     }
   }
+
+
+  //REACT ROUTER: provides route matching and router componenets, handles routing requests to navigate different views. Also helpful with other concerns like generating unique bookable URLs for each view. Handles back and forwith browser history.
+  //common componenets we 'll use: 
+  //  <BrowseRouter> - top parent wrap, uses HTML5 history API that controls browser history.
+  //  <Route> renders UI for matching path, use 'exact' attribute if you want exact match
+  //  <Redirect> redirects toa  new URL
+  //  <Switch> Groups <Route> componenets together
+  //  <Link> Creates links to path, renders as <a> - use instead of <a> itself.
+  //  <NavLink> Special version of <Link>, adds styles to active Link.
+  //we will install react router and use it for course project.
