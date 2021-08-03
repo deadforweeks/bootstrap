@@ -1,6 +1,6 @@
 body {
   font-family: "Open Sans", sans-serif;
-  background-color:rgb(241, 253, 174);
+  background-color:rgb(250, 255, 220);
 }
 .card {
   border-radius:10px;
@@ -131,4 +131,8 @@ h2 {
 .card {
   margin-top:10px;
   margin-bottom:10px
+}
+
+.breadcrumb {
+  background-color:rgba(181, 232, 247, 0.932)
 }

@@ -19,6 +19,7 @@
   import { PARTNERS } from '../shared/partners';
   import {PROMOTIONS} from '../shared/promotions';
   // After putting all of this ^^^{ } we'll put it in Main Componenet's this.state 
+  import About from './AboutComponent';
 
   class Main extends Component {
 
@@ -63,7 +64,9 @@
           <Home
               campsite={ this.state.campsites.filter(campsite => campsite.featured)[0] }
               promotion={ this.state.promotions.filter(promotion => promotion.featured)[0] } 
-              partner = {this.state.partners.filter(partner => partner.featured)[0]}   />
+              partner = {this.state.partners.filter(partner => partner.featured)[0]}   
+              
+              />
           
         );
       };
@@ -107,6 +110,14 @@
             in direcotry we passed state data. If we do the same as props to the componenet we are routing to, good rule of thumb is to use RENDER SYNTAX. 
             But we we are just routing compoenent without passing along state data then we do this state comopnenet attribute. 
             It also generated a URL on upon clicking, /contactus */}
+
+            {/* <Route exact path='/aboutus' component={About} /> */}
+            {/* ^^^doesn't work because ti doesn't pass states */}
+            {/* We can ALWAYS use render below, vvv     as opposed to component. */}
+            <Route exact path='/aboutus' render={ () => <About partners={this.state.partners} />} />
+            
+            
+            
             <Redirect to='/home' />
             {/* This redirects to the home route like a default statement, like a swtich default statement. They act in the same logic as switch statement. any routing comes through will goes through these three switch statements until it finds its destination. When none it goes to /home (which is the switch default) */}
             {/* ^^^ (removed onClick={campsiteId => this.onCampsiteSelect(campsiteId)} since react router) */}

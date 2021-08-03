@@ -4,7 +4,7 @@
 //in part 2 we will move something up from DIRECTORY componenet to parent componenet, APP.
 //app componenet renders the directory so APP is componenet and DIRECTORY is child.
 import React, {Component} from 'react'; //before {Componenet} was up there but now it's removed because we've successfully transitioned to functional componenets
-import { Card, CardImg, CardImgOverlay,  CardTitle } from 'reactstrap';     //removed cardText & cardBody
+import { Card, CardImg, CardImgOverlay,  CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';     //removed cardText & cardBody
 // Importing card componenets from reactbootstrap^^^ to be referred to from down render() parts of the campsites (return div...)
 // import CampsiteInfo from './CampsiteInfoComponent';   (this is now moved to main componenet)
 
@@ -118,7 +118,7 @@ function Directory(props) {
                     {/* ^^^^All of this will be changed with function componenets below: */}
                     <RenderDirectoryItem campsite={campsite} />  {/* <<<  onClick={props.onClick} is removed */}
                     {/* AFTER REMOVING ALL THE onClick's, CAMPISTE WILL NO LONGER BRING UP AN ERROR */}
-                </div>
+            </div>
             );
         }); //end of render
         //map needs a callback function and then be told what to do from there
@@ -126,11 +126,25 @@ function Directory(props) {
         //map is one of the most useful things to know.
  
         return (    
-        //FINAL RETURN FOR THE WHOEL ENTIRE DIRECTORY where as other returns are in OTHER RENDERING COMPONENETS
-        //while most returns are used to pass datas constained inside  componenet, when we are ready to break out of this componenet and send data back to the parent component, this will happen in the final return
-        //this ^^^ is the right return because it's in the top level 
-            // has to return a SINGLE REACT ELEMENT
+
             <div className="container">
+
+                {/* 1st and foremost setting up breadcrumb: */}
+                <div className="row">
+                    <div className="col">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>Directory</BreadcrumbItem>
+                        </Breadcrumb>
+                        <h2>Directory</h2>
+                        <hr/>
+                    </div>
+                </div>
+
+                {/* FINAL RETURN FOR THE WHOEL ENTIRE DIRECTORY where as other returns are in OTHER RENDERING COMPONENETS
+                while most returns are used to pass datas constained inside  componenet, when we are ready to break out of this componenet and send data back to the parent component, this will happen in the final return
+                this ^^^ is the right return because it's in the top level 
+                has to return a SINGLE REACT ELEMENT */}
                 <div className="row">
                     {/* USE JS INSIDE OF JSX IS TO USE CURLY BRACES 
                     diretory will use little d instead of big d. directory variable, and Directory componenet, are two separate things.*/}

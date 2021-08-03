@@ -1,5 +1,7 @@
 import React from 'react';  //REMOVED {component} as well
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+// import {  Breadcrumb, BreadcrumbItem } from 'reactstrap';     //removed cardText & cardBody
+import {Link} from 'react-router-dom';
 // import CampsiteInfo from './CampsiteInfoComponent';
 
 // Changing things to componenets; we need to spin out three componenets. ONe for each class component.
@@ -12,7 +14,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
                 <Card>
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
-                        <CardTitle>{campsite.name}</CardTitle>
+                        {/* <CardTitle>{campsite.name}</CardTitle> */}
                         <CardText>{campsite.description}</CardText>
                         <CardText>Elevation: {campsite.elevation}</CardText>
                         {/* <CardText>Comment: {campsite.comments.rating}</CardText> */}
@@ -48,6 +50,18 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
         if (props.campsite) {   //removed this. since it's now a function (from render() to campsiteInfo)
             return (
                 <div className="container">
+
+                    {/* Breadcrumb starts here: we use props.campsite.name to name things dynamically */}
+                    <div className="row">
+                        <div className="col">
+                            <Breadcrumb>
+                                <BreadcrumbItem><Link to="/directory">Directory</Link></BreadcrumbItem>
+                                <BreadcrumbItem active>{props.campsite.name}</BreadcrumbItem>
+                            </Breadcrumb>
+                            <h2 className="ml-2">{props.campsite.name}</h2>
+                        </div>
+                    </div>                    
+
                     <div className="row">
                         <RenderCampsite campsite={props.campsite} />    {/*          before: {this.renderCampsite(this.props.campsite)} */}
                         {/* <RenderComments comments={props.campsite.comments} />    before: {this.renderComments(this.props.campsite.comments)} */}
