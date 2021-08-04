@@ -285,3 +285,9 @@ class Contact extends Component {
 }
 export default Contact;
 //now we tell our original app how to route to this componenet ContactComponent
+
+/* WE HAVE NOW OFFICIALLY SET UP A "CONTROLLED FORM" - WHEREAS UNCONTROLLED IS DIFFERENT : useful when we need a qick/dirty way to set up uncontrolled form, or set up a react form and integrate it with non-react code. 
+using uncontrolled forms can integrate react code with old non react code. */
+// Controlled forms: react controls form state
+// Uncontrolled forms: dom continues to handle the form state and react just retrieves the data when needed. the form element within the dom that acts as the single source of truth. instead of react. the way we retrieve that data is by using 'ref' to retrieve that data... in reactstrap, called innerRef precisely.
+//(implementing an uncontrolled form with login modal in Header component now...)
