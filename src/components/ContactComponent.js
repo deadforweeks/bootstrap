@@ -7,7 +7,26 @@ import React , {Component} from 'react';
 //replacing reactstrap form componenets with ones from react-redux forms. Therefore, crossed out above, and now using:
 import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, LocalForm, Errors } from 'react-redux-form';
+                            //^ adding Errors due to redux validation,a nd then above the contact compoenent validation we need to first define few componenetns to help us w/ validation... 
+
+//VALIDATION LOGIC REDUX:
+const required = val => val
+//^^^first function required receives value as arugment. this will be string value that receives. we know because all form inputs are received as strngs even if numbers. then inside functions we check if there are values that just cuz all form inputs are received as strings,even if numbers. then inside function we check if there's a val that's received (not undefined or null) thus allwe gotta put is val beaucse val would be falsy if undefined or null. then we check if length of string is greater than zero. 
+// so we see if this fill has something in it thus true if something's in it, otherwise false if not. if returns false if it fails the test and creates an error.
+const maxLength = len => val => !val || (val.length<=len);
+//next, ^^^^^^, is called maxLength. the way it's called later requires us to be wrapping it around a function, so there are two arrow functions not just one. first takes max lenght second takes value. then from inner function we wanna return true, if max length hasn't been exceeded. so !val will return true if there is no value then max length clearly isn't exceeded. OR, we will also return true, if value's length is less or equal to maximum.
+//if both condition returns false then this function will return false for maxLength, which means the test has been failed for maxlength thus create an error.
+const minLength = len => val => val && (val.length >= len);
+//^^ works similarly    wraps function isnide a function, and this inner function will return true (val), and the value is greater than and equal to minimum. And it will reutrn false, if either those conditions are false, and that'll mean it has failed a test for minLength and that'll create an error.
+const isNumber = val => !isNaN(+val) 
+//^^ wanna check if this shit is a number, so we use + to turn it into a number if it can be. and if value isn't a valid number then this + will turn it into a special value NAN, which is NOT a nubmer
+                        //^^^and we'll check if the value is the opposite is an !isNan(+val), so if it's not a valid number then this'll utlimately return false, and if it is, then it'll return true. basically we are saying it's NOT NOTaNumber.
+const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+// ^^using a regEx to check for a valid email. more thorough than checking for valid symbol:
+//to make sure if email begins a-z and contains only the chars valid in an email address which is 0-9, dot, percentage, plus or minus. then we see if there is an @ sign, then we check if there's only a-z, then \. and see if there's a .com or anything within [2,4].
+//we put a .test after that to see if it passes the test.
+
 
 
 //  replacing:
@@ -188,9 +207,21 @@ class Contact extends Component {
                                 before the input component we were using , to add form-control class..... but we ain't using that any more so add it manually!
                                 finally remove value, invalid, onblur, onchange, etc... at this time.   */}
                                 <Control.text model=".firstName" 
-                                className = "form-control"
                                 id="firstName" name="firstName" 
                                 placeholder="First Name"
+                                className = "form-control"
+                                validators = {{ 
+                                    //update the contact form!
+                                    //each of the control componenents in the form, starting w/ first name, we will add new attribute called validators.
+                                    //we need to add an atribute called validator.    
+                                    //for value of that attribute we give it an object that contains functions that are appropriate for the componenent
+                                    //so for FIRST NAME, we wanna give the required function, then the minlength function. and we will specifiy that we want minLenght that's 2, and maxLength that's 15. it'll be exactly the same for LastNames.
+                                    required,
+                                    minLength: minLength(2), 
+                                    maxLength: maxLength(15)
+                                    //it'll be the same for lastName so copy/paste
+                                }}
+                                // this is ADDED because of REDUX
                                 // removing the rest of the attributes used for validation -- thanks to redux -- can be removed at this time
                                 // value={this.state.firstName}
                                 // invalid={errors.firstName} //is there an error message for this field? an empty string would evaluate as false, but if shit isn't empty string then it'd evaluate here is true, so it'd be true here. Then down at the <formfeedback> just below it gives the form feedback value for the field if user does put something erroneous.
@@ -198,7 +229,18 @@ class Contact extends Component {
                                 // ^^so any time when user enter but moves away from this field that will fire this event handler.
                                 // onChange={this.handleInputChange}
                                 />
-                                {/* <FormFeedback>{errors.firstName}</FormFeedback> NEED TO REMOVE ALL THE FORM FEEDBACKS AS WELL---- REDUX*/} 
+                                {/* <FormFeedback>{errors.firstName}</FormFeedback> NEED TO REMOVE ALL THE FORM FEEDBACKS AS WELL---- REDUX
+                                Replacing it with errors: */} 
+                                <Errors className="text-danger" //to make it red
+                                        model = ".firstName" //to make it match the firstName to match the model of the componenet
+                                        show="touched"      //cause the form filled to only show error messages if it's been touched by the user. same fucntionality as code before, as we did previous exercise, except simpler
+                                        component = "div" // to wrap each error message in a div, telling the redux componenent
+                                        messages = {{
+                                            required: "Field Required",
+                                            minLength: 'Must be at least 2 characters',
+                                            maxLength: 'Must be at least 15 characters or less'
+                                        }}      //this can be copied&pasted for the rest of the components
+                                />
                             </Col>
                         </Row>
 
@@ -218,8 +260,27 @@ class Contact extends Component {
                                 // onBlur={this.handleBlur("lastName")}
                                 // ^^so any time when user enter but moves away from this field that will fire this event handler.
                                 // onChange={this.handleInputChange} 
+                                validators = {{ 
+                                    //each of the control componenents in the form, starting w/ first name, we will add new attribute called validators.
+                                    //we need to add an atribute called validator.    
+                                    //for value of that attribute we give it an object that contains functions that are appropriate for the componenent
+                                    //so for FIRST NAME, we wanna give the required function, then the minlength function. and we will specifiy that we want minLenght that's 2, and maxLength that's 15. it'll be exactly the same for LastNames.
+                                    required,
+                                    minLength: minLength(2), 
+                                    maxLength: maxLength(15)        //next, phoneNum is different
+                                }}
                                 />                                
                                 {/* <FormFeedback>{errors.lastName}</FormFeedback> */}
+                                <Errors className="text-danger" //to make it red
+                                        model = ".lastName" //to make it match the firstName to match the model of the componenet
+                                        show="touched"      //cause the form filled to only show error messages if it's been touched by the user. same fucntionality as code before, as we did previous exercise, except simpler
+                                        component = "div" // to wrap each error message in a div, telling the redux componenent
+                                        messages = {{
+                                            required: "Field Required",
+                                            minLength: 'Must be at least 2 characters',
+                                            maxLength: 'Must be at least 15 characters or less'
+                                        }}      //this can be copied&pasted for the rest of the components
+                                />
                             </Col>
                         </Row>
 
@@ -238,8 +299,24 @@ class Contact extends Component {
                                 // onBlur={this.handleBlur("phoneNum")}
                                 // ^^so any time when user enter but moves away from this field that will fire this event handler.
                                 // onChange = {this.handleInputChange} 
-                                />
+                                validators ={{ //for phoneNum control we add required validator
+                                    required,
+                                    minLength: minLength(10),
+                                    maxLength: maxLength(15),
+                                    isNumber    //see if it is a number
+                                }}       />
                                 {/* <FormFeedback>{errors.phoneNum}</FormFeedback> */}
+                                <Errors className="text-danger" //to make it red
+                                        model = ".phoneNum" //to make it match the firstName to match the model of the componenet
+                                        show="touched"      //cause the form filled to only show error messages if it's been touched by the user. same fucntionality as code before, as we did previous exercise, except simpler
+                                        component = "div" // to wrap each error message in a div, telling the redux componenent
+                                        messages = {{
+                                            required: "Field Required",
+                                            minLength: 'Must be at least 10 numbers',
+                                            maxLength: 'Must be at least 15 numbers or less',
+                                            isNumber: 'must be a number'  // if isnNum fails?
+                                        }}      //this can be copied&pasted for the rest of the components
+                                />
                             </Col>
                         </Row>
 
@@ -257,8 +334,24 @@ class Contact extends Component {
                                 // onBlur={this.handleBlur("email")}
                                 // ^^so any time when user enter but moves away from this field that will fire this event handler.
                                 // onChange={this.handleInputChange} 
+
+                                // email control we need just the required, and validemail functions for validators
+                                validators = {{ //valid email we need just required && validEmail
+                                    required,
+                                    validEmail
+                                }}
                                 />
-                                {/* <FormFeedback>{errors.email}</FormFeedback> */}
+                                {/* <FormFeedback>{errors.email}</FormFeedback> 
+                                similarly for email, below, we need to change model and give this an error message, for validEmail */}
+                                <Errors className="text-danger" //to make it red
+                                        model = ".email" //to make it match the firstName to match the model of the componenet
+                                        show="touched"      //cause the form filled to only show error messages if it's been touched by the user. same fucntionality as code before, as we did previous exercise, except simpler
+                                        component = "div" // to wrap each error message in a div, telling the redux componenent
+                                        messages = {{
+                                            required: "Field Required",
+                                            validEmail: 'invalid email address!'    //for invalid email
+                                        }}      //this can be copied&pasted for the rest of the components
+                                />
                             </Col>
                         </Row>
 
