@@ -5,9 +5,11 @@ import Main from './components/MainComponent';
 // ^^^changed from directory componenet to main component
 //all these^^^  imports that aren't using ./ Paths, they are coming from modules that are from node.module folder. How does one know where to look? by default webpack is doing work for you behind the scens to make it easier to import modules. So you put 'react' and it looks inside of node_modules and finds it there.
 import { BrowserRouter } from 'react-router-dom';
+//importing both from redux folder:
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
 
-// Therefore,
-//below, ./app makes it clear that you are not using webpack to find it there. 
+// Therefore, below, ./app makes it clear that you are not using webpack to find it there. 
 import './App.css';
 //^^^then we'll use this array to set the local state in app:
 // How to define react Component? Two ways: Functional compoenent & Class component.
@@ -30,6 +32,12 @@ import './App.css';
 //  function App() 
 //  { }
 
+//REDUX UPDATE: remember in configureStore.js, that function returns the redux store, sp we have to capture that return value in constant in app.js named Store
+//therefore we need to capture it in a constant that refers to configurestore()
+const store=ConfigureStore();
+
+
+
 //class componenet:
 class App extends Component {
   // constructor(props) {
@@ -41,17 +49,18 @@ class App extends Component {
   // ^^^can delete the constructor now because everything's also moved to the maincomponent.js
 
   render() {
-    return (
-      <BrowserRouter>
-      {/*^^^ Making it the highest level componenet which returns from app which gives it main componenet from its chidlren. */}
-        <div className="App">
-            <Main />
-        </div> 
-      </BrowserRouter>
+    return (  //in the app componenet's return statement we need tow rap everything around the REACT's provider statement giving the store an attribute.
+    //this makes redux store available to all componenets that are all chidlren of app:
+      <Provider store={store}>      
+        <BrowserRouter> {/* BrowserRouter: making it the highest level componenet which returns from app which gives it main componenet from its chidlren. */}
+          <div className="App">
+              <Main />
+          </div> 
+        </BrowserRouter>
+      </Provider> //after this, finally, we goto mainc ompnenent to update redux
       );
   };
 }
-
 
 export default App; //this is referred to by ` import App from './App.js' ` from INDEX.js
 
@@ -60,4 +69,3 @@ export default App; //this is referred to by ` import App from './App.js' ` from
 // with no default exports you have to use {} when you use them. 
 // you can use curly braces aroudn the name and remove the default keyword, like:
 // export { App };
-

@@ -8,34 +8,47 @@
   import Header from './HeaderComponent';
   import Footer from './FooterComponent';
   import Home from './HomeComponent';
+  import About from './AboutComponent';
   import Contact from './ContactComponent';
   // ^^^routing it from ContactComponenet.js
-  import { Switch, Route, Redirect } from 'react-router-dom';
+  import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
   // ^^^  to set up brains of our router so they know where to send users when thye click on different things with their app. Before this, when we went app it showed us directory view default. we gonna change by setting default homepage view. 
   // one of things we gotta do we gotta erase below, the clicking/selecting campsite for more info. This won't be done now after adding this.
-  import { CAMPSITES } from '../shared/campsites';
+  import { connect } from 'react-redux';  //we are no longer storing application data in the main componenent state, we are transferring to the redux store. 
+  //!!! ^ this means we no longer requier any of the imports or the constructors from main!
+  // import { CAMPSITES } from '../shared/campsites';
                         //   ^^^^dot dot slash means go down two folders!!!!
-  import { COMMENTS } from '../shared/comments';
-  import { PARTNERS } from '../shared/partners';
-  import {PROMOTIONS} from '../shared/promotions';
+  // import { COMMENTS } from '../shared/comments';
+  // import { PARTNERS } from '../shared/partners';
+  // import {PROMOTIONS} from '../shared/promotions';
   // After putting all of this ^^^{ } we'll put it in Main Componenet's this.state 
-  import About from './AboutComponent';
+
+  //DELETED CONSTRUCTOR NOW INSTEAD we set up mapStateToProp function from redux:
+    //it will take the state as an argument and return the campsites, comments, partners, and promotions arrays as props.
+  const mapStateToProps = state => {  
+    return {
+      campsites: state.campsites,
+      comments: state.comments,
+      partners: state.partners,
+      promotions: state.promotions
+    } //now we take all occurences of the word state in the main componenet to props. 
+    //   ^^ **WHY 4.REDUX EXERCISE 6:00**? 
+    //from this point ALL STATES HAVE CHANGED TO PROPS.
+  }
 
   class Main extends Component {
-
-    constructor(props) {
-      super(props);
-      this.state= {
-        campsites: CAMPSITES,
+    // constructor(props) {  //deleting the constructor cuz we don't need it due to switching sstoring to redux, and get the state from redux.
+      // super(props);
+      // this.state= {
+        // campsites: CAMPSITES,
         // (Next after ^^^this we gotta pass it down as props to the directory component )
-
         // selectedCampsite: null  //moved here from directoryComponent
         // ^^^deleted after route switching
-        comments: COMMENTS,
-        partners: PARTNERS,
-        promotions: PROMOTIONS
-      };
-    }
+        // comments: COMMENTS,
+        // partners: PARTNERS,
+        // promotions: PROMOTIONS
+      // };
+    // }
 
     // Below is now deleted because of route switching:
     // onCampsiteSelect(campsiteId) {  //changed campsite to campsiteId so we can be clear
@@ -50,7 +63,6 @@
       // This is why react is declarative and NOT imperative.
       //next we have to trigger this method. when one click on a card.
   
-
     render() {
       //creating homepage using arrow function. RInstead of function declaration: it's a feature of arrow functions: that has to do with feature of this.keyword inside keywords. 
       //arrow functions inhereit THIS of their parent scope. if we had used the function declaration then we use this. inside of it, it wouldn't have pointed to the state of their parent class, and it would have actually been undefined!
@@ -62,21 +74,19 @@
           //this is repeated with promotions, with .filter, as well, logic is the same. Pass [0] to the home component as props.
           //psame as partner:
           <Home
-              campsite={ this.state.campsites.filter(campsite => campsite.featured)[0] }
-              promotion={ this.state.promotions.filter(promotion => promotion.featured)[0] } 
-              partner = {this.state.partners.filter(partner => partner.featured)[0]}   
-              
-              />
-          
+              campsite={ this.props.campsites.filter(campsite => campsite.featured)[0] }
+              promotion={ this.props.promotions.filter(promotion => promotion.featured)[0] } 
+              partner = {this.props.partners.filter(partner => partner.featured)[0]}  
+              />  //all initial this.state changed to this.props, thanks to redux
         );
       };
 
       // Const homepageWithId here, with =() = function cuz again it receives props in the bracket, in this case we pass in match, and we use it by this.
       const CampsiteWithId = ( {match} ) => {
         return (  //render the campsite info componenet in here, passing certaing thing as props, one campsiteInfo campsite obj, then all the comments for taht site.
-          <CampsiteInfo 
-          campsite={this.state.campsites.filter(campsite=>campsite.id === +match.params.campsiteId)[0] } 
-          comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}    />
+          <CampsiteInfo     //all this.state. below, also changed to this.props. thanks to redux
+          campsite={this.props.campsites.filter(campsite=>campsite.id === +match.params.campsiteId)[0] } 
+          comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}    />
             //^^^we hae all campsite info inside main component state. and comments. use this.state.campsites. 
             //then we filter and look for the campsite object that has the ID that matches what stored inside match.params.campsiteID
             //because the value is stored as a string maybe we use a unary plus operator, which is +match.params.campsiteId >>> when you have number stored as a string & you wanna convert it into a number, this is how you do it.
@@ -91,12 +101,12 @@
           {/* Navbar component moved to Header.js */}
           <Header/>
             {/* Setting up some Router Logic under Header: */}
-          <Switch>
+          <Switch> {/* Thanks to redux every this.state below has been changed to this.props: */}
             <Route path='/home' component={HomePage} />
             {/* Two paths, (1) Anything tries to goto the home, send it to Homepage
                         ^^^ also same as typing /home on URL */}
             
-            <Route exact path='/directory' render={ () => <Directory campsites={this.state.campsites} />} />
+            <Route exact path='/directory' render={ () => <Directory campsites={this.props.campsites} />} />
             {/* 2nd path: w/ boolean attribute 'exact'. Thsi path will be directory, and next tot hat it's a render attribute that set up the old arrow function that returns the Directory component.  */}
             
             <Route path='/directory/:campsiteId' component={CampsiteWithId} />
@@ -114,10 +124,9 @@
             {/* <Route exact path='/aboutus' component={About} /> */}
             {/* ^^^doesn't work because ti doesn't pass states */}
             {/* We can ALWAYS use render below, vvv     as opposed to component. */}
-            <Route exact path='/aboutus' render={ () => <About partners={this.state.partners} />} />
+            <Route exact path='/aboutus' render={ () => <About partners={this.props.partners} />} />
             
-            
-            
+
             <Redirect to='/home' />
             {/* This redirects to the home route like a default statement, like a swtich default statement. They act in the same logic as switch statement. any routing comes through will goes through these three switch statements until it finds its destination. When none it goes to /home (which is the switch default) */}
             {/* ^^^ (removed onClick={campsiteId => this.onCampsiteSelect(campsiteId)} since react router) */}
@@ -138,5 +147,10 @@
       );
     };
   }
-export default Main;  
-  // export default App;
+
+// export default App;
+
+export default withRouter(connect (mapStateToProps)(Main));
+// REDUX:                  ^^^ Finally at the bottom we need to set up connect method like this(redux): using a pair of parenthesiss using connect, first contains(mapStateToProps) second contains  (main) component
+//all of this done below will allow main componenet to take a state from redux store.
+//one last thing: ^^^  withRouter function imported earlier from ReactRouterDom, we need to wrap & export this so that the reactRouter will still work with these changes to our export.
