@@ -1,4 +1,4 @@
-//REDUX NOTES; INTRODUCTION TO REDUX
+//REACT WEEK 4 REDUX NOTES: INTRODUCTION TO REDUX
 
 //MVC Design pattern : *often heard in software development&* (mvpm or mva, aka mvc framework, not framework like bootstrap. MVC is a software design pattern. not code, not library.
 // it's a msuical approach as to how to structure an application.)
@@ -122,10 +122,22 @@
 //moving reponsibility for the state, from our main componenent, to redux.
 // we use reducers` to create update state
 
-import {CAMPSITES} from '../shared/campsites';
+// * * * * * 
+
+//WEEK 5 SPLITTING THE REDUCER:
+//Last week we just had a single file, reducer.js and it contained a single reducer function. that reducer is working w/ the entire state which consisted of four properties: campsites, \comments, promotions, partners. All of those propreties all independnet of eah other and can be managed separately. often it'll be useful to split up reducers into multiple reducers and put em in separate files. 
+//redux's however, createstore function'll only accept a single reducer, as an argument. so redux will also provide function that'll combineReducers taht'll take all your reducers, and combine 'em into a single root reducer to use with CreateStore.
+//After that we'll implement actions, with action types, and actionCreators.
+
+// SPLITTING AND COMBINING REDUCERS: we will now create different files for all the reducer arrays. campsites, partners, comments, promotions
+//then we combine them in the end and this'll replace the reducer.js file that we created previously.
+//first four files will be created : campsites.js, comments.js, partners.js, promotions.js. Inside each one import corresponding data from the shared folder:
+import {CAMPSITES} from '../shared/campsites';  //imported to campsites.js reducer
 import {COMMENTS} from '../shared/comments';
 import {PARTNERS} from '../shared/partners';
 import {PROMOTIONS} from '../shared/promotions';
+
+//in redux we put all the state in one state.
 
 export const initialState = {  //object will be the inital state of our app which we get straight from our data files.
     campsites: CAMPSITES,

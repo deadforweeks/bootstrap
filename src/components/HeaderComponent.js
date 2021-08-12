@@ -25,7 +25,7 @@ class Header extends Component {
         //next part: so we need to make sure they're being set by pulling the values from the forms correctly. this is where we use react innerRefs.
 
     }
-
+        //UNCONTROLLED FORMS: There is no this.state ... it is stateless.
         // method that serves what happens when navbar handler is clicked. toggle down. when triggered, it'll it'll change state to set state to opposite of its current state.
         toggleNav() {
             this.setState( //setState(), not state. Using a not logical operator:
@@ -117,7 +117,8 @@ class Header extends Component {
                         {/* Adding a button inside nav bar that will toggle the modal. it's behind Nav but still before end of collapse so that the login button will show up in the collapse menu. using jsx w/ span classnames so it'll have the same text styles, as the navigation links. also align it horizontally to the right. */}
                         <span className="navbar-text ml-auto">
                             {/* We give button below an onclick function to toggle this.toggleMOdal : */}
-                            <Button className="loginButton" outline onClick={this.toggleModal}>
+                            <Button className="loginButton" outline onClick={this.toggleModal}> 
+                            {/* ^^^^ all this is toggling during click, is toggling the Modal componenet. */}
                                 <i className="fa fa-sign-in fa-lg" /> Login
                                 {/* Giving it a login icon and link */}
                             </Button>
@@ -128,6 +129,7 @@ class Header extends Component {
 
             {/* NOw setting up a Modal componenet beneath the nav bar. */}
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}> 
+                            {/* ^^^^If this is just replaced as {true} then it will always pop up. */}
             {/*^^^ isOpen predefines whether this modal is open or not. When this set to false it'll be close, if state set to true then modal will be visible. 
             For toggle attribute we set it to this.toggleModal*/}
                 <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>

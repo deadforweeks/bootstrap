@@ -22,10 +22,14 @@
   // import { PARTNERS } from '../shared/partners';
   // import {PROMOTIONS} from '../shared/promotions';
   // After putting all of this ^^^{ } we'll put it in Main Componenet's this.state 
+  import {addComment} from '../redux/ActionCreators'; //reactActions
+
 
   //DELETED CONSTRUCTOR NOW INSTEAD we set up mapStateToProp function from redux:
     //it will take the state as an argument and return the campsites, comments, partners, and promotions arrays as props.
-  const mapStateToProps = state => {  
+  const mapStateToProps = state => {    
+    //before we had this.state, now we moved all that state to redux, and this thing below, is how we get that stateto display as properties now.  
+    //and exporting mapstatetoprops by the end of the line.
     return {
       campsites: state.campsites,
       comments: state.comments,
@@ -34,6 +38,12 @@
     } //now we take all occurences of the word state in the main componenet to props. 
     //   ^^ **WHY 4.REDUX EXERCISE 6:00**? 
     //from this point ALL STATES HAVE CHANGED TO PROPS.
+  }
+
+  //REDUXACTIONS: Setting up mapDispatchToProps.js -- can do it two ways: can set up mapToDispatch as function or object. the recommended way to do it is an object, so it'll be set up as a constant given one property for now, addComments. 
+  const mapDispatchToProps = {
+    addComment: (campsiteId, rating, author, text ) => (addComment(campsiteId, rating, author, text))
+    //^^for value we give it the four value then => we'll call the action creator, addComment, passing in the data. Then we goto bottom of the file and add the mapDispatchToProps object inside the connect function, as the second argument
   }
 
   class Main extends Component {
@@ -85,14 +95,20 @@
       const CampsiteWithId = ( {match} ) => {
         return (  //render the campsite info componenet in here, passing certaing thing as props, one campsiteInfo campsite obj, then all the comments for taht site.
           <CampsiteInfo     //all this.state. below, also changed to this.props. thanks to redux
-          campsite={this.props.campsites.filter(campsite=>campsite.id === +match.params.campsiteId)[0] } 
-          comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}    />
+            campsite={this.props.campsites.filter(campsite=>campsite.id === +match.params.campsiteId)[0] } 
+            comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}    
+          
             //^^^we hae all campsite info inside main component state. and comments. use this.state.campsites. 
             //then we filter and look for the campsite object that has the ID that matches what stored inside match.params.campsiteID
             //because the value is stored as a string maybe we use a unary plus operator, which is +match.params.campsiteId >>> when you have number stored as a string & you wanna convert it into a number, this is how you do it.
             //anytime you put a + in front of a "666666" in the console, whatever numbers within the " " will become num.    i.e. type in console.log( typeof(+"1") )
             //since filter returns an array, i want the campsite object, i'll use a zero index at the end to fetch the object.
             //then for COMMENTS, need to filter out whatever comment that matches the campsiteId. Then here we gotta do the whole array, not just a single comment, so no need for zero index behind it.
+            
+            //now in the render componenet of main method we render the cmapsiteInfo copmonent we can now pass the addComment function to it as a prop
+            addComment={this.props.addComment}  //now we need to update campsiteinfocomponenet js file to use the addcomment  actioncreator function ...
+
+            />
             )
       }
 
@@ -150,7 +166,10 @@
 
 // export default App;
 
-export default withRouter(connect (mapStateToProps)(Main));
+export default withRouter(connect (mapStateToProps, mapDispatchToProps)(Main));
 // REDUX:                  ^^^ Finally at the bottom we need to set up connect method like this(redux): using a pair of parenthesiss using connect, first contains(mapStateToProps) second contains  (main) component
 //all of this done below will allow main componenet to take a state from redux store.
 //one last thing: ^^^  withRouter function imported earlier from ReactRouterDom, we need to wrap & export this so that the reactRouter will still work with these changes to our export.
+                                                    //^^^ we goto bottom of the file and add the mapDispatchToProps object inside the connect function, as the second argument
+                                                    //now this has made the addCommentActonCreator function available inside the main componenet as a PROP.
+                                                    //then in the render componenet of main method we render the cmapsiteInfo copmonent we can now pass the addComment function to it as a prop

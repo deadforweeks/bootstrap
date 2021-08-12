@@ -1,4 +1,3 @@
-
 //very much like contactus.html page, in js
 import React , {Component} from 'react';
 // import {  Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';     //removed cardText & cardBody
@@ -57,12 +56,18 @@ class Contact extends Component {
         //next we can remove the handle-input-change and handle-blur methods, including this binding below since now we let react-redux take care of that behaviour. 
         // this.handleInputChange = this.handleInputChange.bind(this);
         // ^^^makes it so that we can use this. keyword inside handleinputchange to have it point to the correct object.
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);   //<<<<< make "this" exist
         //^^also bind this event handler in the the constructor, so that when we refer this.state in the handlesubmit method, it knows to look for that state in the constructor of 'this.' compoenent. 
+        //removing the bind(this) above ^^^ results in 'this is undefined'.
+        // if you wanna use handleInputChange = (event) => {} , then you don't have to use bind. the same way as,
+        // handleSubmit = (event) => {} ;
     }
 
     //FURTHERMORE WE CAN REMOVE THE WHOLE VALIDATE METHOD thanks to redux
     // validate(firstName, lastName, phoneNum, email) {
+    //      console.log('validate: even if you haven't done anything you can call validate');
+    //      console.log(new Date()) //so every time you click on anything, you compute, it returns this validate statement.
+    //
     //     //setting up errors object. property will hold error messages for the four fields IF there is an error.
     //     const errors = {
     //         firstName:'',
@@ -106,7 +111,8 @@ class Contact extends Component {
     //corresponding with onBlur, we require this handleBlur function
     // handleBlur = (field) => () => { //because we pass in argument other than event we gotta do different here: wrap handleblur method in another function
     //wrap handleblur method in another function. also we use arrow function tod efine this method. //event handlers can be bound in react by using arrow function by arrow definition instead of using bind method in the constructor. again.  //so that we don't have to bind this. in this method as we did with others.
-        // this.setState(  //used to change the touched object but we don't wanna change entire object so we only wanna change one of the properties inside of it. Doing it by using ...SPREAD syntax, will spread out this.state.touched object and then will update the property that corresponds to the [field]: that triggered the event, whether first name or last name or etc. We use computed property name syntax here to get the name of that property. We set the name of that property then to true so we knwo it's been touched.
+        // this.setState(   //used to change the touched object but we don't wanna change entire object so we only wanna change one of the properties inside of it. Doing it by using ...SPREAD syntax, will spread out this.state.touched object and then will update the property that corresponds to the [field]: that triggered the event, whether first name or last name or etc. We use computed property name syntax here to get the name of that property. We set the name of that property then to true so we knwo it's been touched.
+                            //in react, you must setState to update state.
             // {
                 // touched: {...this.state.touched, [field]:true }
             // }   //next, onto validation!
@@ -114,8 +120,8 @@ class Contact extends Component {
     // }
     
     //Now adding two class methods, one to handle changes inf orm elements and the othe to handle submissions. 
-    // handleInputChange(event) {
-        // const target=event.target;
+    // handleInputChange(event) {       //event consists of all things we have changed. you can console.log(event).
+        // const target=event.target;       //we care about target, because target is first name. every time we change something, it passes through handleInputChange.  
         // const name=target.name;
         // makes it easier to reference shit as in event.target, and event.target.name
         // const value=target.type==='checkbox' ? target.checked:target.value;
@@ -123,8 +129,9 @@ class Contact extends Component {
         // this.setState(
             // {   //setting target's name by []. depending on which thing that triggered the event, could be first name, last name, email, etc
                 //so name is taken from the input that has been changed
-                // [name]: value   //we get the variable from the value from above
+                // [name]: value   //we get the variable from the value from above      (teacher says it's a fancy way of updating state.)
             // }   //to make this happen we need to put this.handleinputchange=this.handleinputchange.bind(this) few lines above
+
         // )
     // }
 
@@ -143,7 +150,7 @@ class Contact extends Component {
 
         //REMOVED : ERROR VARIABLE IN THE RENDER MOETHOD IN THE RENDER METHOD THAT CALLED TEH VALIDATE METHOD.
         //thanks redux:
-        // const errors = this.validate(this.state.firstName, this.state.lastName, this.state.phoneNum, this.state.email);
+        // const errors = this.validate(this.state.firstName, this.state.lastName, this.state.phoneNum, this.state.email);  //every time we render, we call validate. to see if this. everything fits standards and protocols and if not then returns an error...
         // ^^^  down @ render there needs to be an error as well because the above errors is locally scoped and not available in render.
         // ^^ passing the urrent values of firstNam lastNam email and phone which is conveniently stored in state. then that method will validate those fields, and RETURN error object, which is stored inside this varaible!! anytime there's a change in the error field this will be rerendered.
         //then setting up an invalid handle field (boolean field) for each input we are validating. invalid=(errors.property)? 
@@ -225,9 +232,9 @@ class Contact extends Component {
                                 // removing the rest of the attributes used for validation -- thanks to redux -- can be removed at this time
                                 // value={this.state.firstName}
                                 // invalid={errors.firstName} //is there an error message for this field? an empty string would evaluate as false, but if shit isn't empty string then it'd evaluate here is true, so it'd be true here. Then down at the <formfeedback> just below it gives the form feedback value for the field if user does put something erroneous.
-                                // onBlur={this.handleBlur("firstName")}
+                                // onBlur={this.handleBlur("firstName")}        //this is like, tracking what's been changed
                                 // ^^so any time when user enter but moves away from this field that will fire this event handler.
-                                // onChange={this.handleInputChange}
+                                // onChange={this.handleInputChange}        //tracking changed state.
                                 />
                                 {/* <FormFeedback>{errors.firstName}</FormFeedback> NEED TO REMOVE ALL THE FORM FEEDBACKS AS WELL---- REDUX
                                 Replacing it with errors: */} 
@@ -257,7 +264,7 @@ class Contact extends Component {
                                 // value={this.state.lastName}
                                 // invalid={errors.lastName} 
                                 //^^^is there an error message for this field? an empty string would evaluate as false, but if shit isn't empty string then it'd evaluate here is true, so it'd be true here. Then down at the <formfeedback> just below it gives the form feedback value for the field if user does put something erroneous.
-                                // onBlur={this.handleBlur("lastName")}
+                                // onBlur={this.handleBlur("lastName")} //whenever user touch this textbox, it's on blur, we will see what's in this field.
                                 // ^^so any time when user enter but moves away from this field that will fire this event handler.
                                 // onChange={this.handleInputChange} 
                                 validators = {{ 
